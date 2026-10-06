@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="it" data-lingua="it" data-titolo-it="Luce, Flayris" data-titolo-en="Light, Flayris">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/drago.png">
+<script>(function(){var r=document.documentElement,l=null,ok=function(x){return x==="it"||x==="en"};try{l=new URLSearchParams(location.search).get("l")}catch(e){}if(!ok(l)){try{l=localStorage.getItem("flayris-lingua")}catch(e){}}if(!ok(l)){try{l=sessionStorage.getItem("flayris-lingua")}catch(e){}}if(!ok(l)){var m=/flayris-lingua=(it|en)/.exec(window.name||"");l=m&&m[1]}if(!ok(l)){l=(navigator.language||"en").toLowerCase().indexOf("it")===0?"it":"en"}r.setAttribute("data-lingua",l);r.lang=l})();</script>
+<title>Luce, Flayris</title>
+<meta name="description" content="Light, Flayris">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Serif+Display&family=Alfa+Slab+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/flayris.css?v=d5771952">
+<link rel="stylesheet" href="css/nuovo.css?v=977b689f">
+</head>
+<body>
+<svg id="drago" aria-hidden="true">
+  <defs>
+    <linearGradient id="scia" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000">
+      <stop offset="0" stop-color="#39E5FD"/>
+      <stop offset=".5" stop-color="#925AFE"/>
+      <stop offset="1" stop-color="#D04BF0"/>
+    </linearGradient>
+  </defs>
+  <g id="segni"></g>
+</svg>
+<header id="testata">
+  <a class="marchio" href="index.html"><img src="img/drago.png" alt=""><span>FLAYRIS</span></a>
+  <div class="barra">
+    <ul id="voci">
+      <li><a href="segno.html"><span data-l="it">Segno</span><span data-l="en">Mark</span></a></li>
+      <li><a href="materia.html"><span data-l="it">Materia</span><span data-l="en">Matter</span></a></li>
+      <li><a href="pixel.html">Pixel</a></li>
+      <li><a href="luce.html" aria-current="page"><span data-l="it">Luce</span><span data-l="en">Light</span></a></li>
+      <li><a href="index.html#dietro"><span data-l="it">Chi sono</span><span data-l="en">About me</span></a></li>
+      <li><a href="index.html#contatti"><span data-l="it">Scrivimi</span><span data-l="en">Talk to me</span></a></li>
+    </ul>
+    <div class="lingua" role="group" aria-label="Lingua / Language"><button type="button" data-set="it">IT</button><button type="button" data-set="en">EN</button></div>
+  </div>
+  <button class="apri-menu" type="button" aria-controls="voci" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<main id="inizio">
+  <section class="testa-pagina">
+    <p class="briciole"><a href="index.html">Flayris</a> / <span data-l="it">Luce</span><span data-l="en">Light</span></p>
+    <h1 class="ritaglio" data-l="it" data-ritaglio="LUCE" data-seme="31">Luce</h1><h1 class="ritaglio" data-l="en" data-ritaglio="LIGHT" data-seme="31">Light</h1>
+    <p class="intro"><span data-l="it">Fotografia: dagli esercizi per conoscere la macchina ai racconti per immagini. Divisa per anno e per progetto.</span><span data-l="en">Photography: from exercises to learn the camera to stories told in pictures. Sorted by year and by project.</span></p>
+    <ul class="cifre">
+      <li><b>23</b> <span data-l="it">progetti</span><span data-l="en">projects</span></li>
+      <li><b>2025–2026</b></li>
+    </ul>
+  </section>
+  <ul class="indice" aria-label="Progetti">
+    <li><a href="#dragons-of-wayne"><span data-l="it">Draghi a Wayne</span><span data-l="en">Dragons of Wayne</span> <small>2026</small></a></li>
+    <li><a href="#tiny-worlds"><span data-l="it">Piccoli mondi</span><span data-l="en">Tiny Worlds</span> <small>2026</small></a></li>
+    <li><a href="#ball-in-a-box">Ball in a Box <small>2026</small></a></li>
+    <li><a href="#old-giants"><span data-l="it">Vecchi giganti</span><span data-l="en">Old Giants</span> <small>2026</small></a></li>
+    <li><a href="#into-the-woods"><span data-l="it">Nel bosco</span><span data-l="en">Into the Woods</span> <small>2026</small></a></li>
+    <li><a href="#this-is-me">This is Me <small>2025</small></a></li>
+    <li><a href="#walking-in-nature">Walking in Nature <small>2025</small></a></li>
+    <li><a href="#weather">Weather <small>2025</small></a></li>
+    <li><a href="#wildlife">Wildlife <small>2025</small></a></li>
+    <li><a href="#time-lapse-and-long-exposure">Time Lapse and Long Exposure <small>2025</small></a></li>
+    <li><a href="#back-in-time">Back in Time <small>2025</small></a></li>
+    <li><a href="#montage">Montage <small>2025</small></a></li>
+    <li><a href="#24-hours">24 Hours <small>2025</small></a></li>
+    <li><a href="#walk-for-wellness">Walk for Wellness <small>2025</small></a></li>
+    <li><a href="#get-to-know-your-camera">Get to Know Your Camera <small>2025</small></a></li>
+    <li><a href="#composition">Composition <small>2025</small></a></li>
+    <li><a href="#alchemy-of-elements">Alchemy of Elements <small>2025</small></a></li>
+    <li><a href="#nature">Nature <small>2025</small></a></li>
+    <li><a href="#photojournalism">Photojournalism <small>2025</small></a></li>
+    <li><a href="#still-life">Still Life <small>2025</small></a></li>
+    <li><a href="#magazine">Magazine <small>2025</small></a></li>
+    <li><a href="#portraits">Portraits <small>2025</small></a></li>
+    <li><a href="#black-and-white">Black and White <small>2025</small></a></li>
+  </ul>
+  <h2 class="divisore-anno" id="anno-2026">2026</h2>
+  <section class="serie" id="dragons-of-wayne">
+    <div class="serie-testo">
+      <span class="anno">2026</span>
+      <h2><span data-l="it">Draghi a Wayne</span><span data-l="en">Dragons of Wayne</span></h2>
+      <p>Photo III</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.754"><button type="button" data-grande="img/luce/luce-dragons-of-wayne-2026-01.jpg" data-titolo-it="Draghi a Wayne" data-titolo-en="Dragons of Wayne" data-serie-it="Draghi a Wayne" data-serie-en="Dragons of Wayne" aria-label="Draghi a Wayne"><span class="cornice"><img loading="lazy" src="img/thumb/luce-dragons-of-wayne-2026-01.jpg" width="700" height="399" alt="Draghi a Wayne"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.367"><button type="button" data-grande="img/luce/luce-dragons-of-wayne-2026-02.jpg" data-titolo-it="Draghi a Wayne" data-titolo-en="Dragons of Wayne" data-serie-it="Draghi a Wayne" data-serie-en="Dragons of Wayne" aria-label="Draghi a Wayne"><span class="cornice"><img loading="lazy" src="img/thumb/luce-dragons-of-wayne-2026-02.jpg" width="700" height="512" alt="Draghi a Wayne"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.786"><button type="button" data-grande="img/luce/luce-dragons-of-wayne-2026-03.jpg" data-titolo-it="Draghi a Wayne" data-titolo-en="Dragons of Wayne" data-serie-it="Draghi a Wayne" data-serie-en="Dragons of Wayne" aria-label="Draghi a Wayne"><span class="cornice"><img loading="lazy" src="img/thumb/luce-dragons-of-wayne-2026-03.jpg" width="700" height="392" alt="Draghi a Wayne"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.631"><button type="button" data-grande="img/luce/luce-dragons-of-wayne-2026-04.jpg" data-titolo-it="Draghi a Wayne" data-titolo-en="Dragons of Wayne" data-serie-it="Draghi a Wayne" data-serie-en="Dragons of Wayne" aria-label="Draghi a Wayne"><span class="cornice"><img loading="lazy" src="img/thumb/luce-dragons-of-wayne-2026-04.jpg" width="442" height="700" alt="Draghi a Wayne"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.505"><button type="button" data-grande="img/luce/luce-dragons-of-wayne-2026-05.jpg" data-titolo-it="Draghi a Wayne" data-titolo-en="Dragons of Wayne" data-serie-it="Draghi a Wayne" data-serie-en="Dragons of Wayne" aria-label="Draghi a Wayne"><span class="cornice"><img loading="lazy" src="img/thumb/luce-dragons-of-wayne-2026-05.jpg" width="700" height="465" alt="Draghi a Wayne"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="tiny-worlds">
+    <div class="serie-testo">
+      <span class="anno">2026</span>
+      <h2><span data-l="it">Piccoli mondi</span><span data-l="en">Tiny Worlds</span></h2>
+      <p>Photo III</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.357"><button type="button" data-grande="img/luce/luce-tiny-worlds-2026-01.jpg" data-titolo-it="Piccoli mondi" data-titolo-en="Tiny Worlds" data-serie-it="Piccoli mondi" data-serie-en="Tiny Worlds" aria-label="Piccoli mondi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-tiny-worlds-2026-01.jpg" width="700" height="516" alt="Piccoli mondi"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.357"><button type="button" data-grande="img/luce/luce-tiny-worlds-2026-02.jpg" data-titolo-it="Piccoli mondi" data-titolo-en="Tiny Worlds" data-serie-it="Piccoli mondi" data-serie-en="Tiny Worlds" aria-label="Piccoli mondi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-tiny-worlds-2026-02.jpg" width="700" height="516" alt="Piccoli mondi"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.357"><button type="button" data-grande="img/luce/luce-tiny-worlds-2026-03.jpg" data-titolo-it="Piccoli mondi" data-titolo-en="Tiny Worlds" data-serie-it="Piccoli mondi" data-serie-en="Tiny Worlds" aria-label="Piccoli mondi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-tiny-worlds-2026-03.jpg" width="700" height="516" alt="Piccoli mondi"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.357"><button type="button" data-grande="img/luce/luce-tiny-worlds-2026-04.jpg" data-titolo-it="Piccoli mondi" data-titolo-en="Tiny Worlds" data-serie-it="Piccoli mondi" data-serie-en="Tiny Worlds" aria-label="Piccoli mondi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-tiny-worlds-2026-04.jpg" width="700" height="516" alt="Piccoli mondi"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.357"><button type="button" data-grande="img/luce/luce-tiny-worlds-2026-05.jpg" data-titolo-it="Piccoli mondi" data-titolo-en="Tiny Worlds" data-serie-it="Piccoli mondi" data-serie-en="Tiny Worlds" aria-label="Piccoli mondi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-tiny-worlds-2026-05.jpg" width="700" height="516" alt="Piccoli mondi"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="ball-in-a-box">
+    <div class="serie-testo">
+      <span class="anno">2026</span>
+      <h2>Ball in a Box</h2>
+      <p>Photo III</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/luce/luce-ball-in-a-box-2026-01.jpg" data-titolo-it="Ball in a Box" data-titolo-en="Ball in a Box" data-serie-it="Ball in a Box" data-serie-en="Ball in a Box" aria-label="Ball in a Box"><span class="cornice"><img loading="lazy" src="img/thumb/luce-ball-in-a-box-2026-01.jpg" width="525" height="700" alt="Ball in a Box"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/luce/luce-ball-in-a-box-2026-02.jpg" data-titolo-it="Ball in a Box" data-titolo-en="Ball in a Box" data-serie-it="Ball in a Box" data-serie-en="Ball in a Box" aria-label="Ball in a Box"><span class="cornice"><img loading="lazy" src="img/thumb/luce-ball-in-a-box-2026-02.jpg" width="525" height="700" alt="Ball in a Box"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/luce/luce-ball-in-a-box-2026-03.jpg" data-titolo-it="Ball in a Box" data-titolo-en="Ball in a Box" data-serie-it="Ball in a Box" data-serie-en="Ball in a Box" aria-label="Ball in a Box"><span class="cornice"><img loading="lazy" src="img/thumb/luce-ball-in-a-box-2026-03.jpg" width="525" height="700" alt="Ball in a Box"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/luce/luce-ball-in-a-box-2026-04.jpg" data-titolo-it="Ball in a Box" data-titolo-en="Ball in a Box" data-serie-it="Ball in a Box" data-serie-en="Ball in a Box" aria-label="Ball in a Box"><span class="cornice"><img loading="lazy" src="img/thumb/luce-ball-in-a-box-2026-04.jpg" width="525" height="700" alt="Ball in a Box"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/luce/luce-ball-in-a-box-2026-05.jpg" data-titolo-it="Ball in a Box" data-titolo-en="Ball in a Box" data-serie-it="Ball in a Box" data-serie-en="Ball in a Box" aria-label="Ball in a Box"><span class="cornice"><img loading="lazy" src="img/thumb/luce-ball-in-a-box-2026-05.jpg" width="525" height="700" alt="Ball in a Box"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="old-giants">
+    <div class="serie-testo">
+      <span class="anno">2026</span>
+      <h2><span data-l="it">Vecchi giganti</span><span data-l="en">Old Giants</span></h2>
+      <p>Photo III</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.400"><button type="button" data-grande="img/luce/luce-old-giants-2026-01.jpg" data-titolo-it="Vecchi giganti" data-titolo-en="Old Giants" data-serie-it="Vecchi giganti" data-serie-en="Old Giants" aria-label="Vecchi giganti"><span class="cornice"><img loading="lazy" src="img/thumb/luce-old-giants-2026-01.jpg" width="700" height="500" alt="Vecchi giganti"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.714"><button type="button" data-grande="img/luce/luce-old-giants-2026-02.jpg" data-titolo-it="Vecchi giganti" data-titolo-en="Old Giants" data-serie-it="Vecchi giganti" data-serie-en="Old Giants" aria-label="Vecchi giganti"><span class="cornice"><img loading="lazy" src="img/thumb/luce-old-giants-2026-02.jpg" width="500" height="700" alt="Vecchi giganti"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="into-the-woods">
+    <div class="serie-testo">
+      <span class="anno">2026</span>
+      <h2><span data-l="it">Nel bosco</span><span data-l="en">Into the Woods</span></h2>
+      <p>Photo III</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.400"><button type="button" data-grande="img/luce/luce-into-the-woods-2026-01.jpg" data-titolo-it="Nel bosco" data-titolo-en="Into the Woods" data-serie-it="Nel bosco" data-serie-en="Into the Woods" aria-label="Nel bosco"><span class="cornice"><img loading="lazy" src="img/thumb/luce-into-the-woods-2026-01.jpg" width="700" height="500" alt="Nel bosco"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.400"><button type="button" data-grande="img/luce/luce-into-the-woods-2026-02.jpg" data-titolo-it="Nel bosco" data-titolo-en="Into the Woods" data-serie-it="Nel bosco" data-serie-en="Into the Woods" aria-label="Nel bosco"><span class="cornice"><img loading="lazy" src="img/thumb/luce-into-the-woods-2026-02.jpg" width="700" height="500" alt="Nel bosco"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.400"><button type="button" data-grande="img/luce/luce-into-the-woods-2026-03.jpg" data-titolo-it="Nel bosco" data-titolo-en="Into the Woods" data-serie-it="Nel bosco" data-serie-en="Into the Woods" aria-label="Nel bosco"><span class="cornice"><img loading="lazy" src="img/thumb/luce-into-the-woods-2026-03.jpg" width="700" height="500" alt="Nel bosco"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.400"><button type="button" data-grande="img/luce/luce-into-the-woods-2026-04.jpg" data-titolo-it="Nel bosco" data-titolo-en="Into the Woods" data-serie-it="Nel bosco" data-serie-en="Into the Woods" aria-label="Nel bosco"><span class="cornice"><img loading="lazy" src="img/thumb/luce-into-the-woods-2026-04.jpg" width="700" height="500" alt="Nel bosco"></span></button></figure>
+    </div>
+  </section>
+  <h2 class="divisore-anno" id="anno-2025">2025</h2>
+  <section class="serie" id="this-is-me">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>This is Me</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.830"><button type="button" data-grande="img/luce/luce-this-is-me-2025-01.jpg" data-titolo-it="Sileno con Dioniso bambino, Musei Vaticani" data-titolo-en="Silenus with the infant Dionysus, Vatican Museums" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me, sileno con dioniso bambino, musei vaticani"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-01.jpg" width="581" height="700" alt="This is Me, sileno con dioniso bambino, musei vaticani"></span></button><figcaption><span data-l="it">Sileno con Dioniso bambino, Musei Vaticani</span><span data-l="en">Silenus with the infant Dionysus, Vatican Museums</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.830"><button type="button" data-grande="img/luce/luce-this-is-me-2025-02.jpg" data-titolo-it="Apollo del Belvedere, Musei Vaticani" data-titolo-en="Apollo Belvedere, Vatican Museums" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me, apollo del belvedere, musei vaticani"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-02.jpg" width="581" height="700" alt="This is Me, apollo del belvedere, musei vaticani"></span></button><figcaption><span data-l="it">Apollo del Belvedere, Musei Vaticani</span><span data-l="en">Apollo Belvedere, Vatican Museums</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.830"><button type="button" data-grande="img/luce/luce-this-is-me-2025-03.jpg" data-titolo-it="Angelo con la spugna, Ponte Sant&#x27;Angelo" data-titolo-en="Angel with the Sponge, Ponte Sant&#x27;Angelo" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me, angelo con la spugna, ponte sant&#x27;angelo"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-03.jpg" width="581" height="700" alt="This is Me, angelo con la spugna, ponte sant&#x27;angelo"></span></button><figcaption><span data-l="it">Angelo con la spugna, Ponte Sant&#x27;Angelo</span><span data-l="en">Angel with the Sponge, Ponte Sant&#x27;Angelo</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-04.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-04.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-05.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-05.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-06.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-06.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-07.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-07.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-08.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-08.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-09.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-09.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-this-is-me-2025-10.jpg" data-titolo-it="This is Me" data-titolo-en="This is Me" data-serie-it="This is Me" data-serie-en="This is Me" aria-label="This is Me"><span class="cornice"><img loading="lazy" src="img/thumb/luce-this-is-me-2025-10.jpg" width="700" height="467" alt="This is Me"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="walking-in-nature">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Walking in Nature</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-walking-in-nature-2025-01.jpg" data-titolo-it="Walking in Nature" data-titolo-en="Walking in Nature" data-serie-it="Walking in Nature" data-serie-en="Walking in Nature" aria-label="Walking in Nature"><span class="cornice"><img loading="lazy" src="img/thumb/luce-walking-in-nature-2025-01.jpg" width="700" height="466" alt="Walking in Nature"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-walking-in-nature-2025-02.jpg" data-titolo-it="Walking in Nature" data-titolo-en="Walking in Nature" data-serie-it="Walking in Nature" data-serie-en="Walking in Nature" aria-label="Walking in Nature"><span class="cornice"><img loading="lazy" src="img/thumb/luce-walking-in-nature-2025-02.jpg" width="700" height="467" alt="Walking in Nature"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-walking-in-nature-2025-03.jpg" data-titolo-it="Walking in Nature" data-titolo-en="Walking in Nature" data-serie-it="Walking in Nature" data-serie-en="Walking in Nature" aria-label="Walking in Nature"><span class="cornice"><img loading="lazy" src="img/thumb/luce-walking-in-nature-2025-03.jpg" width="700" height="467" alt="Walking in Nature"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-walking-in-nature-2025-04.jpg" data-titolo-it="Walking in Nature" data-titolo-en="Walking in Nature" data-serie-it="Walking in Nature" data-serie-en="Walking in Nature" aria-label="Walking in Nature"><span class="cornice"><img loading="lazy" src="img/thumb/luce-walking-in-nature-2025-04.jpg" width="700" height="467" alt="Walking in Nature"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.666"><button type="button" data-grande="img/luce/luce-walking-in-nature-2025-05.jpg" data-titolo-it="Walking in Nature" data-titolo-en="Walking in Nature" data-serie-it="Walking in Nature" data-serie-en="Walking in Nature" aria-label="Walking in Nature"><span class="cornice"><img loading="lazy" src="img/thumb/luce-walking-in-nature-2025-05.jpg" width="466" height="700" alt="Walking in Nature"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="weather">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Weather</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-01.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-01.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.800"><button type="button" data-grande="img/luce/luce-weather-2025-02.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-02.jpg" width="560" height="700" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-03.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-03.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-04.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-04.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-05.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-05.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-06.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-06.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-07.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-07.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-08.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-08.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-weather-2025-09.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-09.jpg" width="700" height="467" alt="Weather"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-weather-2025-10.jpg" data-titolo-it="Weather" data-titolo-en="Weather" data-serie-it="Weather" data-serie-en="Weather" aria-label="Weather"><span class="cornice"><img loading="lazy" src="img/thumb/luce-weather-2025-10.jpg" width="700" height="466" alt="Weather"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="wildlife">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Wildlife</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-wildlife-2025-01.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-01.jpg" width="700" height="466" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-02.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-02.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-03.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-03.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-04.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-04.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-wildlife-2025-05.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-05.jpg" width="700" height="466" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-06.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-06.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-07.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-07.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-08.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-08.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-09.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-09.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-wildlife-2025-10.jpg" data-titolo-it="Wildlife" data-titolo-en="Wildlife" data-serie-it="Wildlife" data-serie-en="Wildlife" aria-label="Wildlife"><span class="cornice"><img loading="lazy" src="img/thumb/luce-wildlife-2025-10.jpg" width="700" height="467" alt="Wildlife"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="time-lapse-and-long-exposure">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Time Lapse and Long Exposure</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-time-lapse-and-long-exposure-2025-01.jpg" data-titolo-it="Stelle" data-titolo-en="Stars" data-serie-it="Time Lapse and Long Exposure" data-serie-en="Time Lapse and Long Exposure" aria-label="Time Lapse and Long Exposure, stelle"><span class="cornice"><img loading="lazy" src="img/thumb/luce-time-lapse-and-long-exposure-2025-01.jpg" width="700" height="467" alt="Time Lapse and Long Exposure, stelle"></span></button><figcaption><span data-l="it">Stelle</span><span data-l="en">Stars</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-time-lapse-and-long-exposure-2025-02.jpg" data-titolo-it="Rushing Lights" data-titolo-en="Rushing Lights" data-serie-it="Time Lapse and Long Exposure" data-serie-en="Time Lapse and Long Exposure" aria-label="Time Lapse and Long Exposure, rushing lights"><span class="cornice"><img loading="lazy" src="img/thumb/luce-time-lapse-and-long-exposure-2025-02.jpg" width="700" height="467" alt="Time Lapse and Long Exposure, rushing lights"></span></button><figcaption>Rushing Lights</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-time-lapse-and-long-exposure-2025-03.jpg" data-titolo-it="Long Exposure Landscape" data-titolo-en="Long Exposure Landscape" data-serie-it="Time Lapse and Long Exposure" data-serie-en="Time Lapse and Long Exposure" aria-label="Time Lapse and Long Exposure, long exposure landscape"><span class="cornice"><img loading="lazy" src="img/thumb/luce-time-lapse-and-long-exposure-2025-03.jpg" width="700" height="467" alt="Time Lapse and Long Exposure, long exposure landscape"></span></button><figcaption>Long Exposure Landscape</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-time-lapse-and-long-exposure-2025-04.jpg" data-titolo-it="Light Painting" data-titolo-en="Light Painting" data-serie-it="Time Lapse and Long Exposure" data-serie-en="Time Lapse and Long Exposure" aria-label="Time Lapse and Long Exposure, light painting"><span class="cornice"><img loading="lazy" src="img/thumb/luce-time-lapse-and-long-exposure-2025-04.jpg" width="700" height="467" alt="Time Lapse and Long Exposure, light painting"></span></button><figcaption>Light Painting</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.777"><button type="button" data-grande="img/luce/luce-time-lapse-and-long-exposure-2025-05.jpg" data-titolo-it="Time Lapse" data-titolo-en="Time Lapse" data-serie-it="Time Lapse and Long Exposure" data-serie-en="Time Lapse and Long Exposure" aria-label="Time Lapse and Long Exposure, time lapse"><span class="cornice"><img loading="lazy" src="img/thumb/luce-time-lapse-and-long-exposure-2025-05.jpg" width="700" height="394" alt="Time Lapse and Long Exposure, time lapse"></span></button><figcaption>Time Lapse</figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="back-in-time">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Back in Time</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-back-in-time-2025-01.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-01.jpg" width="700" height="467" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.483"><button type="button" data-grande="img/luce/luce-back-in-time-2025-02.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-02.jpg" width="700" height="472" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.852"><button type="button" data-grande="img/luce/luce-back-in-time-2025-03.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-03.jpg" width="700" height="378" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.790"><button type="button" data-grande="img/luce/luce-back-in-time-2025-04.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-04.jpg" width="700" height="391" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-back-in-time-2025-05.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-05.jpg" width="467" height="700" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-back-in-time-2025-06.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-06.jpg" width="700" height="467" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.598"><button type="button" data-grande="img/luce/luce-back-in-time-2025-07.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-07.jpg" width="700" height="438" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-back-in-time-2025-08.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-08.jpg" width="700" height="467" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-back-in-time-2025-09.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-09.jpg" width="467" height="700" alt="Back in Time"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.443"><button type="button" data-grande="img/luce/luce-back-in-time-2025-10.jpg" data-titolo-it="Back in Time" data-titolo-en="Back in Time" data-serie-it="Back in Time" data-serie-en="Back in Time" aria-label="Back in Time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-back-in-time-2025-10.jpg" width="700" height="485" alt="Back in Time"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="montage">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Montage</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.633"><button type="button" data-grande="img/luce/luce-montage-2025-01.jpg" data-titolo-it="Montage" data-titolo-en="Montage" data-serie-it="Montage" data-serie-en="Montage" aria-label="Montage"><span class="cornice"><img loading="lazy" src="img/thumb/luce-montage-2025-01.jpg" width="443" height="700" alt="Montage"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="24-hours">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>24 Hours</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-01.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-01.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-02.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-02.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-03.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-03.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.493"><button type="button" data-grande="img/luce/luce-24-hours-2025-04.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-04.jpg" width="700" height="469" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-05.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-05.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-06.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-06.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-07.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-07.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-08.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-08.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-09.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-09.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-10.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-10.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-11.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-11.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-p" style="--ar:0.666"><button type="button" data-grande="img/luce/luce-24-hours-2025-12.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-12.jpg" width="466" height="700" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-13.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-13.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-24-hours-2025-14.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-14.jpg" width="700" height="467" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-15.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-15.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-16.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-16.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-17.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-17.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-18.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-18.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-19.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-19.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-24-hours-2025-20.jpg" data-titolo-it="24 Hours" data-titolo-en="24 Hours" data-serie-it="24 Hours" data-serie-en="24 Hours" aria-label="24 Hours"><span class="cornice"><img loading="lazy" src="img/thumb/luce-24-hours-2025-20.jpg" width="700" height="466" alt="24 Hours"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="walk-for-wellness">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Walk for Wellness</h2>
+      <p>Photo II</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.800"><button type="button" data-grande="img/luce/luce-walk-for-wellness-2025-01.jpg" data-titolo-it="Poster" data-titolo-en="Poster" data-serie-it="Walk for Wellness" data-serie-en="Walk for Wellness" aria-label="Walk for Wellness, poster"><span class="cornice"><img loading="lazy" src="img/thumb/luce-walk-for-wellness-2025-01.jpg" width="560" height="700" alt="Walk for Wellness, poster"></span></button><figcaption>Poster</figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="get-to-know-your-camera">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Get to Know Your Camera</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-get-to-know-your-camera-2025-01.jpg" data-titolo-it="Macro" data-titolo-en="Macro" data-serie-it="Get to Know Your Camera" data-serie-en="Get to Know Your Camera" aria-label="Get to Know Your Camera, macro"><span class="cornice"><img loading="lazy" src="img/thumb/luce-get-to-know-your-camera-2025-01.jpg" width="700" height="467" alt="Get to Know Your Camera, macro"></span></button><figcaption>Macro</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-get-to-know-your-camera-2025-02.jpg" data-titolo-it="Grandangolo" data-titolo-en="Wide angle" data-serie-it="Get to Know Your Camera" data-serie-en="Get to Know Your Camera" aria-label="Get to Know Your Camera, grandangolo"><span class="cornice"><img loading="lazy" src="img/thumb/luce-get-to-know-your-camera-2025-02.jpg" width="700" height="467" alt="Get to Know Your Camera, grandangolo"></span></button><figcaption><span data-l="it">Grandangolo</span><span data-l="en">Wide angle</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-get-to-know-your-camera-2025-03.jpg" data-titolo-it="Movimento" data-titolo-en="Motion" data-serie-it="Get to Know Your Camera" data-serie-en="Get to Know Your Camera" aria-label="Get to Know Your Camera, movimento"><span class="cornice"><img loading="lazy" src="img/thumb/luce-get-to-know-your-camera-2025-03.jpg" width="700" height="467" alt="Get to Know Your Camera, movimento"></span></button><figcaption><span data-l="it">Movimento</span><span data-l="en">Motion</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.671"><button type="button" data-grande="img/luce/luce-get-to-know-your-camera-2025-04.jpg" data-titolo-it="Poca luce" data-titolo-en="Low light" data-serie-it="Get to Know Your Camera" data-serie-en="Get to Know Your Camera" aria-label="Get to Know Your Camera, poca luce"><span class="cornice"><img loading="lazy" src="img/thumb/luce-get-to-know-your-camera-2025-04.jpg" width="470" height="700" alt="Get to Know Your Camera, poca luce"></span></button><figcaption><span data-l="it">Poca luce</span><span data-l="en">Low light</span></figcaption></figure>
+      <figure class="lavoro o-q" style="--ar:1.017"><button type="button" data-grande="img/luce/luce-get-to-know-your-camera-2025-05.jpg" data-titolo-it="Profondità ridotta" data-titolo-en="Narrow depth" data-serie-it="Get to Know Your Camera" data-serie-en="Get to Know Your Camera" aria-label="Get to Know Your Camera, profondità ridotta"><span class="cornice"><img loading="lazy" src="img/thumb/luce-get-to-know-your-camera-2025-05.jpg" width="700" height="688" alt="Get to Know Your Camera, profondità ridotta"></span></button><figcaption><span data-l="it">Profondità ridotta</span><span data-l="en">Narrow depth</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="composition">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Composition</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-composition-2025-01.jpg" data-titolo-it="Semplifica la scena" data-titolo-en="Simplify the scene" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, semplifica la scena"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-01.jpg" width="467" height="700" alt="Composition, semplifica la scena"></span></button><figcaption><span data-l="it">Semplifica la scena</span><span data-l="en">Simplify the scene</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-02.jpg" data-titolo-it="Riempi l&#x27;inquadratura" data-titolo-en="Fill the frame" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, riempi l&#x27;inquadratura"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-02.jpg" width="700" height="467" alt="Composition, riempi l&#x27;inquadratura"></span></button><figcaption><span data-l="it">Riempi l&#x27;inquadratura</span><span data-l="en">Fill the frame</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-composition-2025-03.jpg" data-titolo-it="Formato verticale" data-titolo-en="Aspect ratio, vertical" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, formato verticale"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-03.jpg" width="467" height="700" alt="Composition, formato verticale"></span></button><figcaption><span data-l="it">Formato verticale</span><span data-l="en">Aspect ratio, vertical</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.241"><button type="button" data-grande="img/luce/luce-composition-2025-04.jpg" data-titolo-it="Formato orizzontale" data-titolo-en="Aspect ratio, horizontal" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, formato orizzontale"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-04.jpg" width="700" height="564" alt="Composition, formato orizzontale"></span></button><figcaption><span data-l="it">Formato orizzontale</span><span data-l="en">Aspect ratio, horizontal</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-05.jpg" data-titolo-it="Evita il centro" data-titolo-en="Avoid the middle" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, evita il centro"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-05.jpg" width="700" height="467" alt="Composition, evita il centro"></span></button><figcaption><span data-l="it">Evita il centro</span><span data-l="en">Avoid the middle</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-06.jpg" data-titolo-it="Linee guida" data-titolo-en="Leading lines" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, linee guida"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-06.jpg" width="700" height="467" alt="Composition, linee guida"></span></button><figcaption><span data-l="it">Linee guida</span><span data-l="en">Leading lines</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-07.jpg" data-titolo-it="Diagonali" data-titolo-en="Use diagonals" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, diagonali"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-07.jpg" width="700" height="467" alt="Composition, diagonali"></span></button><figcaption><span data-l="it">Diagonali</span><span data-l="en">Use diagonals</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-08.jpg" data-titolo-it="Spazio per muoversi" data-titolo-en="Space to move" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, spazio per muoversi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-08.jpg" width="700" height="467" alt="Composition, spazio per muoversi"></span></button><figcaption><span data-l="it">Spazio per muoversi</span><span data-l="en">Space to move</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-09.jpg" data-titolo-it="Sfondi" data-titolo-en="Backgrounds" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, sfondi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-09.jpg" width="700" height="467" alt="Composition, sfondi"></span></button><figcaption><span data-l="it">Sfondi</span><span data-l="en">Backgrounds</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-10.jpg" data-titolo-it="Creativi col colore" data-titolo-en="Creative with colors" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, creativi col colore"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-10.jpg" width="700" height="467" alt="Composition, creativi col colore"></span></button><figcaption><span data-l="it">Creativi col colore</span><span data-l="en">Creative with colors</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-composition-2025-11.jpg" data-titolo-it="Stop! Rompere le regole" data-titolo-en="Stop! Breaking the rules" data-serie-it="Composition" data-serie-en="Composition" aria-label="Composition, stop! rompere le regole"><span class="cornice"><img loading="lazy" src="img/thumb/luce-composition-2025-11.jpg" width="700" height="467" alt="Composition, stop! rompere le regole"></span></button><figcaption><span data-l="it">Stop! Rompere le regole</span><span data-l="en">Stop! Breaking the rules</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="alchemy-of-elements">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Alchemy of Elements</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-alchemy-of-elements-2025-01.jpg" data-titolo-it="Path of the Wild" data-titolo-en="Path of the Wild" data-serie-it="Alchemy of Elements" data-serie-en="Alchemy of Elements" aria-label="Alchemy of Elements, path of the wild"><span class="cornice"><img loading="lazy" src="img/thumb/luce-alchemy-of-elements-2025-01.jpg" width="700" height="466" alt="Alchemy of Elements, path of the wild"></span></button><figcaption>Path of the Wild</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-alchemy-of-elements-2025-02.jpg" data-titolo-it="Winter&#x27;s Breath" data-titolo-en="Winter&#x27;s Breath" data-serie-it="Alchemy of Elements" data-serie-en="Alchemy of Elements" aria-label="Alchemy of Elements, winter&#x27;s breath"><span class="cornice"><img loading="lazy" src="img/thumb/luce-alchemy-of-elements-2025-02.jpg" width="700" height="466" alt="Alchemy of Elements, winter&#x27;s breath"></span></button><figcaption>Winter's Breath</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.666"><button type="button" data-grande="img/luce/luce-alchemy-of-elements-2025-03.jpg" data-titolo-it="The Guardian of Snow" data-titolo-en="The Guardian of Snow" data-serie-it="Alchemy of Elements" data-serie-en="Alchemy of Elements" aria-label="Alchemy of Elements, the guardian of snow"><span class="cornice"><img loading="lazy" src="img/thumb/luce-alchemy-of-elements-2025-03.jpg" width="466" height="700" alt="Alchemy of Elements, the guardian of snow"></span></button><figcaption>The Guardian of Snow</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.505"><button type="button" data-grande="img/luce/luce-alchemy-of-elements-2025-04.jpg" data-titolo-it="Fragile Resilience" data-titolo-en="Fragile Resilience" data-serie-it="Alchemy of Elements" data-serie-en="Alchemy of Elements" aria-label="Alchemy of Elements, fragile resilience"><span class="cornice"><img loading="lazy" src="img/thumb/luce-alchemy-of-elements-2025-04.jpg" width="700" height="465" alt="Alchemy of Elements, fragile resilience"></span></button><figcaption>Fragile Resilience</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.666"><button type="button" data-grande="img/luce/luce-alchemy-of-elements-2025-05.jpg" data-titolo-it="Under the Streetlights" data-titolo-en="Under the Streetlights" data-serie-it="Alchemy of Elements" data-serie-en="Alchemy of Elements" aria-label="Alchemy of Elements, under the streetlights"><span class="cornice"><img loading="lazy" src="img/thumb/luce-alchemy-of-elements-2025-05.jpg" width="466" height="700" alt="Alchemy of Elements, under the streetlights"></span></button><figcaption>Under the Streetlights</figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="nature">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Nature</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-nature-2025-01.jpg" data-titolo-it="Fun with Fungi" data-titolo-en="Fun with Fungi" data-serie-it="Nature" data-serie-en="Nature" aria-label="Nature, fun with fungi"><span class="cornice"><img loading="lazy" src="img/thumb/luce-nature-2025-01.jpg" width="700" height="467" alt="Nature, fun with fungi"></span></button><figcaption>Fun with Fungi</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-nature-2025-02.jpg" data-titolo-it="Sunset" data-titolo-en="Sunset" data-serie-it="Nature" data-serie-en="Nature" aria-label="Nature, sunset"><span class="cornice"><img loading="lazy" src="img/thumb/luce-nature-2025-02.jpg" width="700" height="467" alt="Nature, sunset"></span></button><figcaption>Sunset</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-nature-2025-03.jpg" data-titolo-it="Bug&#x27;s Life" data-titolo-en="Bug&#x27;s Life" data-serie-it="Nature" data-serie-en="Nature" aria-label="Nature, bug&#x27;s life"><span class="cornice"><img loading="lazy" src="img/thumb/luce-nature-2025-03.jpg" width="700" height="467" alt="Nature, bug&#x27;s life"></span></button><figcaption>Bug's Life</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-nature-2025-04.jpg" data-titolo-it="Spectacular Silhouette" data-titolo-en="Spectacular Silhouette" data-serie-it="Nature" data-serie-en="Nature" aria-label="Nature, spectacular silhouette"><span class="cornice"><img loading="lazy" src="img/thumb/luce-nature-2025-04.jpg" width="700" height="467" alt="Nature, spectacular silhouette"></span></button><figcaption>Spectacular Silhouette</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-nature-2025-05.jpg" data-titolo-it="Feeding Time" data-titolo-en="Feeding Time" data-serie-it="Nature" data-serie-en="Nature" aria-label="Nature, feeding time"><span class="cornice"><img loading="lazy" src="img/thumb/luce-nature-2025-05.jpg" width="700" height="467" alt="Nature, feeding time"></span></button><figcaption>Feeding Time</figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="photojournalism">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Photojournalism</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-photojournalism-2025-01.jpg" data-titolo-it="Photojournalism" data-titolo-en="Photojournalism" data-serie-it="Photojournalism" data-serie-en="Photojournalism" aria-label="Photojournalism"><span class="cornice"><img loading="lazy" src="img/thumb/luce-photojournalism-2025-01.jpg" width="700" height="467" alt="Photojournalism"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-photojournalism-2025-02.jpg" data-titolo-it="Photojournalism" data-titolo-en="Photojournalism" data-serie-it="Photojournalism" data-serie-en="Photojournalism" aria-label="Photojournalism"><span class="cornice"><img loading="lazy" src="img/thumb/luce-photojournalism-2025-02.jpg" width="700" height="467" alt="Photojournalism"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-photojournalism-2025-03.jpg" data-titolo-it="Photojournalism" data-titolo-en="Photojournalism" data-serie-it="Photojournalism" data-serie-en="Photojournalism" aria-label="Photojournalism"><span class="cornice"><img loading="lazy" src="img/thumb/luce-photojournalism-2025-03.jpg" width="700" height="467" alt="Photojournalism"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-photojournalism-2025-04.jpg" data-titolo-it="Photojournalism" data-titolo-en="Photojournalism" data-serie-it="Photojournalism" data-serie-en="Photojournalism" aria-label="Photojournalism"><span class="cornice"><img loading="lazy" src="img/thumb/luce-photojournalism-2025-04.jpg" width="700" height="467" alt="Photojournalism"></span></button></figure>
+      <figure class="lavoro o-p ruotata" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-photojournalism-2025-05.jpg" data-titolo-it="Photojournalism" data-titolo-en="Photojournalism" data-serie-it="Photojournalism" data-serie-en="Photojournalism" aria-label="Photojournalism"><span class="cornice"><img loading="lazy" src="img/thumb/luce-photojournalism-2025-05.jpg" width="467" height="700" alt="Photojournalism"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="still-life">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Still Life</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l" style="--ar:1.502"><button type="button" data-grande="img/luce/luce-still-life-2025-01.jpg" data-titolo-it="Still Life" data-titolo-en="Still Life" data-serie-it="Still Life" data-serie-en="Still Life" aria-label="Still Life"><span class="cornice"><img loading="lazy" src="img/thumb/luce-still-life-2025-01.jpg" width="700" height="466" alt="Still Life"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-still-life-2025-02.jpg" data-titolo-it="Still Life" data-titolo-en="Still Life" data-serie-it="Still Life" data-serie-en="Still Life" aria-label="Still Life"><span class="cornice"><img loading="lazy" src="img/thumb/luce-still-life-2025-02.jpg" width="700" height="467" alt="Still Life"></span></button></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-still-life-2025-03.jpg" data-titolo-it="Still Life" data-titolo-en="Still Life" data-serie-it="Still Life" data-serie-en="Still Life" aria-label="Still Life"><span class="cornice"><img loading="lazy" src="img/thumb/luce-still-life-2025-03.jpg" width="700" height="467" alt="Still Life"></span></button></figure>
+    </div>
+  </section>
+  <section class="serie" id="magazine">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Magazine</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.769"><button type="button" data-grande="img/luce/luce-magazine-2025-01.jpg" data-titolo-it="Copertina" data-titolo-en="Cover" data-serie-it="Magazine" data-serie-en="Magazine" aria-label="Magazine, copertina"><span class="cornice"><img loading="lazy" src="img/thumb/luce-magazine-2025-01.jpg" width="538" height="700" alt="Magazine, copertina"></span></button><figcaption><span data-l="it">Copertina</span><span data-l="en">Cover</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="portraits">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Portraits</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro fitto" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-portraits-2025-01.jpg" data-titolo-it="Interno" data-titolo-en="Indoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, interno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-01.jpg" width="467" height="700" alt="Portraits, interno"></span></button><figcaption><span data-l="it">Interno</span><span data-l="en">Indoors</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-portraits-2025-02.jpg" data-titolo-it="Interno" data-titolo-en="Indoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, interno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-02.jpg" width="467" height="700" alt="Portraits, interno"></span></button><figcaption><span data-l="it">Interno</span><span data-l="en">Indoors</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-portraits-2025-03.jpg" data-titolo-it="Interno" data-titolo-en="Indoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, interno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-03.jpg" width="700" height="467" alt="Portraits, interno"></span></button><figcaption><span data-l="it">Interno</span><span data-l="en">Indoors</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-portraits-2025-04.jpg" data-titolo-it="Interno" data-titolo-en="Indoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, interno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-04.jpg" width="700" height="467" alt="Portraits, interno"></span></button><figcaption><span data-l="it">Interno</span><span data-l="en">Indoors</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-portraits-2025-05.jpg" data-titolo-it="Interno" data-titolo-en="Indoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, interno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-05.jpg" width="700" height="467" alt="Portraits, interno"></span></button><figcaption><span data-l="it">Interno</span><span data-l="en">Indoors</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-portraits-2025-06.jpg" data-titolo-it="Esterno" data-titolo-en="Outdoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, esterno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-06.jpg" width="467" height="700" alt="Portraits, esterno"></span></button><figcaption><span data-l="it">Esterno</span><span data-l="en">Outdoors</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-portraits-2025-07.jpg" data-titolo-it="Esterno" data-titolo-en="Outdoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, esterno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-07.jpg" width="467" height="700" alt="Portraits, esterno"></span></button><figcaption><span data-l="it">Esterno</span><span data-l="en">Outdoors</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-portraits-2025-08.jpg" data-titolo-it="Esterno" data-titolo-en="Outdoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, esterno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-08.jpg" width="700" height="467" alt="Portraits, esterno"></span></button><figcaption><span data-l="it">Esterno</span><span data-l="en">Outdoors</span></figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-portraits-2025-09.jpg" data-titolo-it="Esterno" data-titolo-en="Outdoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, esterno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-09.jpg" width="700" height="467" alt="Portraits, esterno"></span></button><figcaption><span data-l="it">Esterno</span><span data-l="en">Outdoors</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-portraits-2025-10.jpg" data-titolo-it="Esterno" data-titolo-en="Outdoors" data-serie-it="Portraits" data-serie-en="Portraits" aria-label="Portraits, esterno"><span class="cornice"><img loading="lazy" src="img/thumb/luce-portraits-2025-10.jpg" width="467" height="700" alt="Portraits, esterno"></span></button><figcaption><span data-l="it">Esterno</span><span data-l="en">Outdoors</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="black-and-white">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Black and White</h2>
+      <p>Photo I</p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.800"><button type="button" data-grande="img/luce/luce-black-and-white-2025-01.jpg" data-titolo-it="Mona Lisa" data-titolo-en="Mona Lisa" data-serie-it="Black and White" data-serie-en="Black and White" aria-label="Black and White, mona lisa"><span class="cornice"><img loading="lazy" src="img/thumb/luce-black-and-white-2025-01.jpg" width="560" height="700" alt="Black and White, mona lisa"></span></button><figcaption>Mona Lisa</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.667"><button type="button" data-grande="img/luce/luce-black-and-white-2025-02.jpg" data-titolo-it="The Son of Man" data-titolo-en="The Son of Man" data-serie-it="Black and White" data-serie-en="Black and White" aria-label="Black and White, the son of man"><span class="cornice"><img loading="lazy" src="img/thumb/luce-black-and-white-2025-02.jpg" width="467" height="700" alt="Black and White, the son of man"></span></button><figcaption>The Son of Man</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.623"><button type="button" data-grande="img/luce/luce-black-and-white-2025-03.jpg" data-titolo-it="Lady with an Ermine" data-titolo-en="Lady with an Ermine" data-serie-it="Black and White" data-serie-en="Black and White" aria-label="Black and White, lady with an ermine"><span class="cornice"><img loading="lazy" src="img/thumb/luce-black-and-white-2025-03.jpg" width="436" height="700" alt="Black and White, lady with an ermine"></span></button><figcaption>Lady with an Ermine</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.707"><button type="button" data-grande="img/luce/luce-black-and-white-2025-04.jpg" data-titolo-it="Girl with a Pearl Earring" data-titolo-en="Girl with a Pearl Earring" data-serie-it="Black and White" data-serie-en="Black and White" aria-label="Black and White, girl with a pearl earring"><span class="cornice"><img loading="lazy" src="img/thumb/luce-black-and-white-2025-04.jpg" width="495" height="700" alt="Black and White, girl with a pearl earring"></span></button><figcaption>Girl with a Pearl Earring</figcaption></figure>
+      <figure class="lavoro o-l" style="--ar:1.499"><button type="button" data-grande="img/luce/luce-black-and-white-2025-05.jpg" data-titolo-it="Creation of Adam" data-titolo-en="Creation of Adam" data-serie-it="Black and White" data-serie-en="Black and White" aria-label="Black and White, creation of adam"><span class="cornice"><img loading="lazy" src="img/thumb/luce-black-and-white-2025-05.jpg" width="700" height="467" alt="Black and White, creation of adam"></span></button><figcaption>Creation of Adam</figcaption></figure>
+    </div>
+  </section>
+  <a class="prossima" href="index.html#dietro"><span><span data-l="it">Prossima sezione</span><span data-l="en">Next section</span></span><strong><span data-l="it">Chi c&#x27;è dietro il drago</span><span data-l="en">Behind the dragon</span></strong></a>
+</main>
+<dialog class="lente" id="lente" aria-label="Lavoro ingrandito">
+  <div class="lente-barra"><span class="lente-conta"></span><button type="button" class="chiudi"><span data-l="it">Chiudi</span><span data-l="en">Close</span></button></div>
+  <figure><img alt=""></figure>
+  <p class="lente-dida"><strong></strong><span></span></p>
+  <button type="button" class="freccia prima" aria-label="Precedente">&larr;</button>
+  <button type="button" class="freccia dopo" aria-label="Successivo">&rarr;</button>
+</dialog>
+<footer>Flayris, 2026</footer>
+<script src="js/nuovo.js?v=105e3443"></script>
+<script src="js/flayris.js?v=5eb499ff"></script>
+</body>
+</html>

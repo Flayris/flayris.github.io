@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it" data-lingua="it" data-titolo-it="Materia, Flayris" data-titolo-en="Matter, Flayris">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/drago.png">
+<script>(function(){var r=document.documentElement,l=null,ok=function(x){return x==="it"||x==="en"};try{l=new URLSearchParams(location.search).get("l")}catch(e){}if(!ok(l)){try{l=localStorage.getItem("flayris-lingua")}catch(e){}}if(!ok(l)){try{l=sessionStorage.getItem("flayris-lingua")}catch(e){}}if(!ok(l)){var m=/flayris-lingua=(it|en)/.exec(window.name||"");l=m&&m[1]}if(!ok(l)){l=(navigator.language||"en").toLowerCase().indexOf("it")===0?"it":"en"}r.setAttribute("data-lingua",l);r.lang=l})();</script>
+<title>Materia, Flayris</title>
+<meta name="description" content="Matter, Flayris">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Serif+Display&family=Alfa+Slab+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/flayris.css?v=d5771952">
+<link rel="stylesheet" href="css/nuovo.css?v=977b689f">
+</head>
+<body>
+<svg id="drago" aria-hidden="true">
+  <defs>
+    <linearGradient id="scia" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000">
+      <stop offset="0" stop-color="#39E5FD"/>
+      <stop offset=".5" stop-color="#925AFE"/>
+      <stop offset="1" stop-color="#D04BF0"/>
+    </linearGradient>
+  </defs>
+  <g id="segni"></g>
+</svg>
+<header id="testata">
+  <a class="marchio" href="index.html"><img src="img/drago.png" alt=""><span>FLAYRIS</span></a>
+  <div class="barra">
+    <ul id="voci">
+      <li><a href="segno.html"><span data-l="it">Segno</span><span data-l="en">Mark</span></a></li>
+      <li><a href="materia.html" aria-current="page"><span data-l="it">Materia</span><span data-l="en">Matter</span></a></li>
+      <li><a href="pixel.html">Pixel</a></li>
+      <li><a href="luce.html"><span data-l="it">Luce</span><span data-l="en">Light</span></a></li>
+      <li><a href="index.html#dietro"><span data-l="it">Chi sono</span><span data-l="en">About me</span></a></li>
+      <li><a href="index.html#contatti"><span data-l="it">Scrivimi</span><span data-l="en">Talk to me</span></a></li>
+    </ul>
+    <div class="lingua" role="group" aria-label="Lingua / Language"><button type="button" data-set="it">IT</button><button type="button" data-set="en">EN</button></div>
+  </div>
+  <button class="apri-menu" type="button" aria-controls="voci" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</header>
+<main id="inizio">
+  <section class="testa-pagina">
+    <p class="briciole"><a href="index.html">Flayris</a> / <span data-l="it">Materia</span><span data-l="en">Matter</span></p>
+    <h1 class="ritaglio" data-l="it" data-ritaglio="MATERIA" data-seme="23">Materia</h1><h1 class="ritaglio" data-l="en" data-ritaglio="MATTER" data-seme="23">Matter</h1>
+    <p class="intro"><span data-l="it">Scultura, ceramica, cartone, collage e stampa. Lavori che si toccano, si girano e occupano spazio.</span><span data-l="en">Sculpture, ceramics, cardboard, collage and print. Work you can touch, turn around and that takes up space.</span></p>
+    <ul class="cifre">
+      <li><b>11</b> <span data-l="it">progetti</span><span data-l="en">projects</span></li>
+      <li><b>2024–2026</b></li>
+    </ul>
+  </section>
+  <ul class="indice" aria-label="Progetti">
+    <li><a href="#ode-ad-apollo"><span data-l="it">Ode ad Apollo</span><span data-l="en">Ode to Apollo</span> <small>2026</small></a></li>
+    <li><a href="#baccanti"><span data-l="it">Baccanti</span><span data-l="en">Bacchae</span> <small>2026</small></a></li>
+    <li><a href="#morte"><span data-l="it">Morte</span><span data-l="en">Death</span> <small>2026</small></a></li>
+    <li><a href="#great-barrier-reef">Great Barrier Reef <small>2026</small></a></li>
+    <li><a href="#carpe-diem">Carpe Diem <small>2024</small></a></li>
+    <li><a href="#history">History <small>2024</small></a></li>
+    <li><a href="#surface-and-form">Surface and Form: Vessel <small>2024</small></a></li>
+    <li><a href="#mr-bnn">Mr. Bnn <small>2025</small></a></li>
+    <li><a href="#struggle">Struggle <small>2025</small></a></li>
+    <li><a href="#1000-project">1000 Project: Wendigo <small>2025</small></a></li>
+    <li><a href="#cardboard-collaboration">Cardboard Collaboration: Regret <small>2024</small></a></li>
+  </ul>
+  <section class="singoli" style="--c:3">
+      <figure class="lavoro o-l" style="--ar:1.268"><button type="button" data-grande="img/materia/materia-ode-ad-apollo-2026.jpg" data-titolo-it="Ode ad Apollo" data-titolo-en="Ode to Apollo" data-serie-it="" data-serie-en="" aria-label="Ode ad Apollo"><span class="cornice"><img loading="lazy" src="img/thumb/materia-ode-ad-apollo-2026.jpg" width="700" height="552" alt="Ode ad Apollo"></span></button><figcaption id="ode-ad-apollo"><strong><span data-l="it">Ode ad Apollo</span><span data-l="en">Ode to Apollo</span></strong><span>2026 · <span data-l="it">Serigrafia, 11&quot; x 14&quot;</span><span data-l="en">Silkscreen print, 11&quot; x 14&quot;</span></span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.803"><button type="button" data-grande="img/materia/materia-baccanti-2026.jpg" data-titolo-it="Baccanti" data-titolo-en="Bacchae" data-serie-it="" data-serie-en="" aria-label="Baccanti"><span class="cornice"><img loading="lazy" src="img/thumb/materia-baccanti-2026.jpg" width="562" height="700" alt="Baccanti"></span></button><figcaption id="baccanti"><strong><span data-l="it">Baccanti</span><span data-l="en">Bacchae</span></strong><span>2026 · <span data-l="it">Serigrafia, 11&quot; x 14&quot;</span><span data-l="en">Silkscreen print, 11&quot; x 14&quot;</span></span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-morte-2026.jpg" data-titolo-it="Morte" data-titolo-en="Death" data-serie-it="" data-serie-en="" aria-label="Morte"><span class="cornice"><img loading="lazy" src="img/thumb/materia-morte-2026.jpg" width="525" height="700" alt="Morte"></span></button><figcaption id="morte"><strong><span data-l="it">Morte</span><span data-l="en">Death</span></strong><span>2026 · <span data-l="it">Stampa a riduzione, 11&quot; x 14&quot;</span><span data-l="en">Color reduction print, 11&quot; x 14&quot;</span></span></figcaption></figure>
+  </section>
+  <section class="serie" id="great-barrier-reef">
+    <div class="serie-testo">
+      <span class="anno">2026</span>
+      <h2>Great Barrier Reef</h2>
+      <p><span data-l="it">Xilografia</span><span data-l="en">Woodcut print</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-l scontornato" style="--ar:1.443"><button type="button" data-grande="img/materia/materia-great-barrier-reef-jeff-2026.png" data-titolo-it="Jeff" data-titolo-en="Jeff" data-serie-it="Great Barrier Reef" data-serie-en="Great Barrier Reef" aria-label="Great Barrier Reef, jeff"><span class="cornice"><img loading="lazy" src="img/thumb/materia-great-barrier-reef-jeff-2026.png" width="700" height="485" alt="Great Barrier Reef, jeff"></span></button><figcaption>Jeff</figcaption></figure>
+      <figure class="lavoro o-p scontornato" style="--ar:0.806"><button type="button" data-grande="img/materia/materia-great-barrier-reef-the-brothers-2026.png" data-titolo-it="The Brothers" data-titolo-en="The Brothers" data-serie-it="Great Barrier Reef" data-serie-en="Great Barrier Reef" aria-label="Great Barrier Reef, the brothers"><span class="cornice"><img loading="lazy" src="img/thumb/materia-great-barrier-reef-the-brothers-2026.png" width="564" height="700" alt="Great Barrier Reef, the brothers"></span></button><figcaption>The Brothers</figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="carpe-diem">
+    <div class="serie-testo">
+      <span class="anno">2024</span>
+      <h2>Carpe Diem</h2>
+      <p><span data-l="it">Collage, 14&quot; x 14&quot;. Copertina di un album immaginario, in scala monocromatica</span><span data-l="en">Collage, 14&quot; x 14&quot;. Cover for an imaginary album, in a monochromatic scheme</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-q" style="--ar:1.003"><button type="button" data-grande="img/materia/materia-carpe-diem-1-2024.jpg" data-titolo-it="Carpe Diem I" data-titolo-en="Carpe Diem I" data-serie-it="Carpe Diem" data-serie-en="Carpe Diem" aria-label="Carpe Diem, carpe diem i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-carpe-diem-1-2024.jpg" width="700" height="698" alt="Carpe Diem, carpe diem i"></span></button><figcaption>Carpe Diem I</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-carpe-diem-2-2024.jpg" data-titolo-it="Carpe Diem II" data-titolo-en="Carpe Diem II" data-serie-it="Carpe Diem" data-serie-en="Carpe Diem" aria-label="Carpe Diem, carpe diem ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-carpe-diem-2-2024.jpg" width="525" height="700" alt="Carpe Diem, carpe diem ii"></span></button><figcaption>Carpe Diem II</figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-carpe-diem-3-2024.jpg" data-titolo-it="Carpe Diem III" data-titolo-en="Carpe Diem III" data-serie-it="Carpe Diem" data-serie-en="Carpe Diem" aria-label="Carpe Diem, carpe diem iii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-carpe-diem-3-2024.jpg" width="525" height="700" alt="Carpe Diem, carpe diem iii"></span></button><figcaption>Carpe Diem III</figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="history">
+    <div class="serie-testo">
+      <span class="anno">2024</span>
+      <h2>History</h2>
+      <p><span data-l="it">Matita sottosmalto su vaso in ceramica, 8&quot; x 6&quot;. Una storia personale ispirata alla ceramica greca</span><span data-l="en">Underglaze pencil on a ceramic vase, 8&quot; x 6&quot;. A personal story inspired by Greek pottery</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-history-1-2024.jpg" data-titolo-it="Vista I" data-titolo-en="View I" data-serie-it="History" data-serie-en="History" aria-label="History, vista i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-history-1-2024.jpg" width="700" height="700" alt="History, vista i"></span></button><figcaption><span data-l="it">Vista I</span><span data-l="en">View I</span></figcaption></figure>
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-history-2-2024.jpg" data-titolo-it="Vista II" data-titolo-en="View II" data-serie-it="History" data-serie-en="History" aria-label="History, vista ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-history-2-2024.jpg" width="700" height="700" alt="History, vista ii"></span></button><figcaption><span data-l="it">Vista II</span><span data-l="en">View II</span></figcaption></figure>
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-history-3-2024.jpg" data-titolo-it="Vista III" data-titolo-en="View III" data-serie-it="History" data-serie-en="History" aria-label="History, vista iii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-history-3-2024.jpg" width="700" height="700" alt="History, vista iii"></span></button><figcaption><span data-l="it">Vista III</span><span data-l="en">View III</span></figcaption></figure>
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-history-4-2024.jpg" data-titolo-it="Vista IV" data-titolo-en="View IV" data-serie-it="History" data-serie-en="History" aria-label="History, vista iv"><span class="cornice"><img loading="lazy" src="img/thumb/materia-history-4-2024.jpg" width="700" height="700" alt="History, vista iv"></span></button><figcaption><span data-l="it">Vista IV</span><span data-l="en">View IV</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="surface-and-form">
+    <div class="serie-testo">
+      <span class="anno">2024</span>
+      <h2>Surface and Form: Vessel</h2>
+      <p><span data-l="it">Vaso modellato in 3D con Potterware e stampato in porcellana</span><span data-l="en">Vase modelled in 3D with Potterware and printed in porcelain</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-surface-and-form-vessel-1-2024.jpg" data-titolo-it="Vista I" data-titolo-en="View I" data-serie-it="Surface and Form: Vessel" data-serie-en="Surface and Form: Vessel" aria-label="Surface and Form: Vessel, vista i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-surface-and-form-vessel-1-2024.jpg" width="700" height="700" alt="Surface and Form: Vessel, vista i"></span></button><figcaption><span data-l="it">Vista I</span><span data-l="en">View I</span></figcaption></figure>
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-surface-and-form-vessel-2-2024.jpg" data-titolo-it="Vista II" data-titolo-en="View II" data-serie-it="Surface and Form: Vessel" data-serie-en="Surface and Form: Vessel" aria-label="Surface and Form: Vessel, vista ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-surface-and-form-vessel-2-2024.jpg" width="700" height="700" alt="Surface and Form: Vessel, vista ii"></span></button><figcaption><span data-l="it">Vista II</span><span data-l="en">View II</span></figcaption></figure>
+      <figure class="lavoro o-q" style="--ar:1.000"><button type="button" data-grande="img/materia/materia-surface-and-form-vessel-3-2024.jpg" data-titolo-it="Dall&#x27;alto" data-titolo-en="From above" data-serie-it="Surface and Form: Vessel" data-serie-en="Surface and Form: Vessel" aria-label="Surface and Form: Vessel, dall&#x27;alto"><span class="cornice"><img loading="lazy" src="img/thumb/materia-surface-and-form-vessel-3-2024.jpg" width="700" height="700" alt="Surface and Form: Vessel, dall&#x27;alto"></span></button><figcaption><span data-l="it">Dall&#x27;alto</span><span data-l="en">From above</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="mr-bnn">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Mr. Bnn</h2>
+      <p><span data-l="it">Metallo. Sculpture I, Kid Collaboration</span><span data-l="en">Metal. Sculpture I, Kid Collaboration</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-mr-bnn-1-2025.jpg" data-titolo-it="Vista I" data-titolo-en="View I" data-serie-it="Mr. Bnn" data-serie-en="Mr. Bnn" aria-label="Mr. Bnn, vista i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-mr-bnn-1-2025.jpg" width="525" height="700" alt="Mr. Bnn, vista i"></span></button><figcaption><span data-l="it">Vista I</span><span data-l="en">View I</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-mr-bnn-2-2025.jpg" data-titolo-it="Vista II" data-titolo-en="View II" data-serie-it="Mr. Bnn" data-serie-en="Mr. Bnn" aria-label="Mr. Bnn, vista ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-mr-bnn-2-2025.jpg" width="525" height="700" alt="Mr. Bnn, vista ii"></span></button><figcaption><span data-l="it">Vista II</span><span data-l="en">View II</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-mr-bnn-3-2025.jpg" data-titolo-it="Vista III" data-titolo-en="View III" data-serie-it="Mr. Bnn" data-serie-en="Mr. Bnn" aria-label="Mr. Bnn, vista iii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-mr-bnn-3-2025.jpg" width="525" height="700" alt="Mr. Bnn, vista iii"></span></button><figcaption><span data-l="it">Vista III</span><span data-l="en">View III</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-mr-bnn-4-2025.jpg" data-titolo-it="Vista IV" data-titolo-en="View IV" data-serie-it="Mr. Bnn" data-serie-en="Mr. Bnn" aria-label="Mr. Bnn, vista iv"><span class="cornice"><img loading="lazy" src="img/thumb/materia-mr-bnn-4-2025.jpg" width="525" height="700" alt="Mr. Bnn, vista iv"></span></button><figcaption><span data-l="it">Vista IV</span><span data-l="en">View IV</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-mr-bnn-5-2025.jpg" data-titolo-it="Dettaglio" data-titolo-en="Detail" data-serie-it="Mr. Bnn" data-serie-en="Mr. Bnn" aria-label="Mr. Bnn, dettaglio"><span class="cornice"><img loading="lazy" src="img/thumb/materia-mr-bnn-5-2025.jpg" width="525" height="700" alt="Mr. Bnn, dettaglio"></span></button><figcaption><span data-l="it">Dettaglio</span><span data-l="en">Detail</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="struggle">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>Struggle</h2>
+      <p><span data-l="it">Legno e argilla. Sculpture I, Wood Project: una gabbia a forma di torso</span><span data-l="en">Wood and clay. Sculpture I, Wood Project: a cage shaped like a torso</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-struggle-1-2025.jpg" data-titolo-it="Vista I" data-titolo-en="View I" data-serie-it="Struggle" data-serie-en="Struggle" aria-label="Struggle, vista i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-struggle-1-2025.jpg" width="525" height="700" alt="Struggle, vista i"></span></button><figcaption><span data-l="it">Vista I</span><span data-l="en">View I</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-struggle-2-2025.jpg" data-titolo-it="Vista II" data-titolo-en="View II" data-serie-it="Struggle" data-serie-en="Struggle" aria-label="Struggle, vista ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-struggle-2-2025.jpg" width="525" height="700" alt="Struggle, vista ii"></span></button><figcaption><span data-l="it">Vista II</span><span data-l="en">View II</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-struggle-3-2025.jpg" data-titolo-it="Vista III" data-titolo-en="View III" data-serie-it="Struggle" data-serie-en="Struggle" aria-label="Struggle, vista iii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-struggle-3-2025.jpg" width="525" height="700" alt="Struggle, vista iii"></span></button><figcaption><span data-l="it">Vista III</span><span data-l="en">View III</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-struggle-4-2025.jpg" data-titolo-it="Dettaglio" data-titolo-en="Detail" data-serie-it="Struggle" data-serie-en="Struggle" aria-label="Struggle, dettaglio"><span class="cornice"><img loading="lazy" src="img/thumb/materia-struggle-4-2025.jpg" width="525" height="700" alt="Struggle, dettaglio"></span></button><figcaption><span data-l="it">Dettaglio</span><span data-l="en">Detail</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="1000-project">
+    <div class="serie-testo">
+      <span class="anno">2025</span>
+      <h2>1<span class="zero">0</span><span class="zero">0</span><span class="zero">0</span> Project: Wendigo</h2>
+      <p><span data-l="it">Bastoncini di legno. Sculpture I, 1000 Project</span><span data-l="en">Wooden sticks. Sculpture I, 1000 Project</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-wendigo-1-2025.jpg" data-titolo-it="Vista I" data-titolo-en="View I" data-serie-it="1000 Project: Wendigo" data-serie-en="1000 Project: Wendigo" aria-label="1000 Project: Wendigo, vista i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-wendigo-1-2025.jpg" width="525" height="700" alt="1000 Project: Wendigo, vista i"></span></button><figcaption><span data-l="it">Vista I</span><span data-l="en">View I</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-wendigo-2-2025.jpg" data-titolo-it="Vista II" data-titolo-en="View II" data-serie-it="1000 Project: Wendigo" data-serie-en="1000 Project: Wendigo" aria-label="1000 Project: Wendigo, vista ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-wendigo-2-2025.jpg" width="525" height="700" alt="1000 Project: Wendigo, vista ii"></span></button><figcaption><span data-l="it">Vista II</span><span data-l="en">View II</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-wendigo-3-2025.jpg" data-titolo-it="Vista III" data-titolo-en="View III" data-serie-it="1000 Project: Wendigo" data-serie-en="1000 Project: Wendigo" aria-label="1000 Project: Wendigo, vista iii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-wendigo-3-2025.jpg" width="525" height="700" alt="1000 Project: Wendigo, vista iii"></span></button><figcaption><span data-l="it">Vista III</span><span data-l="en">View III</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-wendigo-4-2025.jpg" data-titolo-it="Vista IV" data-titolo-en="View IV" data-serie-it="1000 Project: Wendigo" data-serie-en="1000 Project: Wendigo" aria-label="1000 Project: Wendigo, vista iv"><span class="cornice"><img loading="lazy" src="img/thumb/materia-wendigo-4-2025.jpg" width="525" height="700" alt="1000 Project: Wendigo, vista iv"></span></button><figcaption><span data-l="it">Vista IV</span><span data-l="en">View IV</span></figcaption></figure>
+    </div>
+  </section>
+  <section class="serie" id="cardboard-collaboration">
+    <div class="serie-testo">
+      <span class="anno">2024</span>
+      <h2>Cardboard Collaboration: Regret</h2>
+      <p><span data-l="it">Scultura in cartone, creata con il corso di poesia attorno a un&#x27;emozione, il rimpianto, e accompagnata da una poesia</span><span data-l="en">Cardboard sculpture, made with the Poetry class around one emotion, regret, and paired with a poem</span></p>
+    </div>
+    <div class="muro" style="--c:4">
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-1-2024.jpg" data-titolo-it="Vista I" data-titolo-en="View I" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista i"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-1-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista i"></span></button><figcaption><span data-l="it">Vista I</span><span data-l="en">View I</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-2-2024.jpg" data-titolo-it="Vista II" data-titolo-en="View II" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista ii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-2-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista ii"></span></button><figcaption><span data-l="it">Vista II</span><span data-l="en">View II</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-3-2024.jpg" data-titolo-it="Vista III" data-titolo-en="View III" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista iii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-3-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista iii"></span></button><figcaption><span data-l="it">Vista III</span><span data-l="en">View III</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-4-2024.jpg" data-titolo-it="Vista IV" data-titolo-en="View IV" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista iv"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-4-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista iv"></span></button><figcaption><span data-l="it">Vista IV</span><span data-l="en">View IV</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-5-2024.jpg" data-titolo-it="Vista V" data-titolo-en="View V" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista v"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-5-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista v"></span></button><figcaption><span data-l="it">Vista V</span><span data-l="en">View V</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-6-2024.jpg" data-titolo-it="Vista VI" data-titolo-en="View VI" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista vi"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-6-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista vi"></span></button><figcaption><span data-l="it">Vista VI</span><span data-l="en">View VI</span></figcaption></figure>
+      <figure class="lavoro o-p" style="--ar:0.750"><button type="button" data-grande="img/materia/materia-cardboard-collaboration-7-2024.jpg" data-titolo-it="Vista VII" data-titolo-en="View VII" data-serie-it="Cardboard Collaboration: Regret" data-serie-en="Cardboard Collaboration: Regret" aria-label="Cardboard Collaboration: Regret, vista vii"><span class="cornice"><img loading="lazy" src="img/thumb/materia-cardboard-collaboration-7-2024.jpg" width="525" height="700" alt="Cardboard Collaboration: Regret, vista vii"></span></button><figcaption><span data-l="it">Vista VII</span><span data-l="en">View VII</span></figcaption></figure>
+    </div>
+  </section>
+  <a class="prossima" href="pixel.html"><span><span data-l="it">Prossima sezione</span><span data-l="en">Next section</span></span><strong>Pixel</strong></a>
+</main>
+<dialog class="lente" id="lente" aria-label="Lavoro ingrandito">
+  <div class="lente-barra"><span class="lente-conta"></span><button type="button" class="chiudi"><span data-l="it">Chiudi</span><span data-l="en">Close</span></button></div>
+  <figure><img alt=""></figure>
+  <p class="lente-dida"><strong></strong><span></span></p>
+  <button type="button" class="freccia prima" aria-label="Precedente">&larr;</button>
+  <button type="button" class="freccia dopo" aria-label="Successivo">&rarr;</button>
+</dialog>
+<footer>Flayris, 2026</footer>
+<script src="js/nuovo.js?v=105e3443"></script>
+<script src="js/flayris.js?v=5eb499ff"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+/* Flayris: stile nuovo (collage ritagliato), comune a tutte le pagine */
+:root{
+  --notte:#050611;--abisso:#0E1234;--ciano:#39E5FD;--viola:#925AFE;--magenta:#D04BF0;--nebbia:#E9ECFA;--cenere:#8E94BC;
+  --carta:#EDEAF5;
+  --display:"Syne",Arial,sans-serif;--testo:"Instrument Sans",Arial,sans-serif;
+  /* margine dei lati: mai meno dello spazio di sicurezza del telefono (tacca, Dynamic Island in orizzontale) */
+  --margine:max(clamp(1rem,5vw,4.5rem),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px));
+  --grana:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:auto;scroll-padding-top:5.5rem}
+body{margin:0;background:var(--notte);color:var(--nebbia);font-family:var(--testo);font-size:1.0625rem;line-height:1.6;overflow-x:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;background-image:var(--grana);opacity:.35;pointer-events:none;z-index:50}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ciano);outline-offset:4px}
+html[data-lingua="it"] [data-l="en"],html[data-lingua="en"] [data-l="it"]{display:none!important}
+
+/* la linea del drago, quella di prima */
+#drago{position:absolute;inset:0 0 auto 0;width:100%;pointer-events:none;z-index:0;overflow:hidden}
+#drago path{fill:none;stroke:url(#scia);stroke-linecap:round}
+#drago .principale{stroke-width:2;opacity:.5}
+#drago .eco{stroke-width:1;opacity:.25}
+#drago .eco.sottile{stroke-width:.7;opacity:.18}
+#drago circle{fill:url(#scia);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+#drago circle.acceso{opacity:.55;transform:scale(1)}
+header,main,footer,.apertura{position:relative;z-index:1}
+
+/* testata come Luminescent: marchio su fondo scuro e barra chiara arrotondata */
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.9rem;padding:.8rem var(--margine);background:var(--notte)}
+.marchio{display:flex;align-items:center;gap:.5rem;text-decoration:none;font:800 1.35rem/1 var(--display);letter-spacing:.06em;color:var(--nebbia);flex:none}
+.marchio img{width:30px}
+.marchio span{position:relative;top:-.04em}
+.barra{flex:1;display:flex;align-items:center;gap:1rem;min-height:46px;padding:.3rem .35rem .3rem 1.6rem;background:#D8CBFF;border-radius:999px;color:var(--notte)}
+.barra ul{display:flex;gap:clamp(1rem,2.6vw,2.6rem);list-style:none;margin:0;padding:0}
+.barra ul a{text-decoration:none;font:800 .78rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:.4rem 0;border-bottom:2px solid transparent;transition:border-color .2s}
+.barra ul a:hover{border-color:var(--notte)}
+.lingua{border:0;margin-left:auto;display:flex;gap:.15rem;background:var(--notte);border-radius:999px;padding:.2rem}
+.lingua button{font:700 .78rem/1 var(--testo);letter-spacing:.05em;color:var(--cenere);background:none;border:0;border-radius:999px;padding:.55rem .75rem;cursor:pointer}
+.lingua button[aria-pressed="true"]{background:var(--viola);color:var(--notte)}
+.apri-menu{display:none;width:44px;height:44px;flex:none;border:0;border-radius:10px;background:#D8CBFF;color:var(--notte);cursor:pointer;place-items:center}
+.apri-menu svg{width:22px;height:22px}
+
+/* lettere ritagliate, stile unico e leggibile */
+.ritaglio{display:flex;flex-wrap:wrap;align-items:center;gap:.05em;margin:0;line-height:1}
+.ritaglio .parola{display:inline-flex;gap:.05em;margin-right:.28em}
+.ritaglio .parola:last-child{margin-right:0}
+.ritaglio .l{display:inline-flex;align-items:center;justify-content:center;min-width:.66em;padding:.04em .1em .08em;font-family:var(--f);transform:rotate(var(--r)) translateY(var(--y));color:var(--notte);background-color:var(--viola);background-image:var(--grana);box-shadow:inset 0 0 .25em rgba(0,0,0,.18),2px 3px 0 rgba(0,0,0,.4)}
+.ritaglio .l.nudo{background:none;box-shadow:none;color:var(--viola)}
+.ritaglio .l.cava{background-color:var(--notte);color:var(--viola);box-shadow:inset 0 0 0 .07em var(--viola),2px 3px 0 rgba(0,0,0,.4)}
+.foglio:not(.scuro):not(.viola) .ritaglio .l.nudo{color:#6a33e0}
+.foglio:not(.scuro):not(.viola) .ritaglio .l.cava{background-color:var(--carta)}
+
+/* apertura come il portfolio di riferimento */
+.apertura{margin:1.6rem var(--margine) 0;padding:clamp(2.5rem,6vw,5rem) 0;display:grid;grid-template-columns:.8fr 1.4fr;align-items:center;gap:clamp(1.5rem,4vw,4rem);min-height:calc(100svh - 7rem)}
+.adesivo{position:relative;justify-self:center;width:min(100%,360px)}
+.adesivo img{width:100%}
+.scintilla{position:absolute;width:var(--s,26px);aspect-ratio:1;color:var(--c,var(--magenta));animation:luccica 3s ease-in-out infinite;animation-delay:var(--d,0s)}
+.scintilla svg{width:100%;height:100%;fill:currentColor}
+@keyframes luccica{50%{transform:scale(.6) rotate(20deg);opacity:.6}}
+.titolone .ruoli{font:500 clamp(.95rem,1.6vw,1.3rem) var(--testo);margin:0 0 1.4rem;text-align:right;color:var(--nebbia)}
+.titolone h1{font-size:clamp(3.6rem,10.5vw,9.5rem);justify-content:flex-end}
+.titolone .firma{display:flex;justify-content:space-between;gap:1rem;margin-top:1.6rem;font:500 clamp(1rem,1.6vw,1.3rem) var(--testo)}
+.titolone .firma span:last-child{color:var(--cenere)}
+
+/* sezioni */
+main.casa{padding:clamp(3rem,7vw,6rem) var(--margine) 2rem}
+.numero{display:inline-block;font:800 clamp(2rem,3.4vw,2.9rem)/1 var(--display);letter-spacing:.03em;color:var(--magenta);margin-bottom:.8rem}
+.entra{display:inline-block;margin-top:1.1rem;padding:.65rem 1.1rem;text-decoration:none;font:800 .95rem var(--display);color:var(--notte);background:var(--ciano);background-image:var(--grana);transform:rotate(-1.5deg);box-shadow:3px 4px 0 rgba(0,0,0,.5);transition:transform .2s}
+.entra:hover{transform:rotate(0) scale(1.05)}
+
+/* polaroid separate, ben visibili */
+.foto{position:relative;display:block;margin:0;padding:.6rem .6rem 0;background:var(--carta);background-image:var(--grana);color:var(--notte);transform:rotate(var(--r,0deg));box-shadow:0 14px 28px rgba(0,0,0,.6),0 3px 8px rgba(0,0,0,.45),-6px 0 14px rgba(0,0,0,.25);transition:transform .25s;text-decoration:none}
+.foto:hover{transform:rotate(0) scale(1.03);z-index:5!important}
+.foto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.foto figcaption{font:600 .78rem/1.25 var(--testo);padding:.55rem .15rem .65rem}
+.foto::before{content:"";position:absolute;top:-11px;left:50%;width:74px;height:22px;margin-left:-37px;background:rgba(233,236,250,.4);transform:rotate(var(--nastro,-4deg))}
+
+/* fogli strappati */
+.foglio{position:relative;margin:clamp(3rem,6vw,5rem) calc(var(--margine) * -1) clamp(3rem,6vw,5rem);padding:clamp(4rem,8vw,6rem) var(--margine);background:var(--carta);background-image:var(--grana);color:var(--notte)}
+.foglio.scuro{background-color:rgba(28,36,104,.5);color:var(--nebbia)}
+.foglio.scuro .ritaglio .l.cava{background-color:#1C2468}
+.video-polaroid{width:min(100%,440px);margin:2.4rem auto 0}
+.video-polaroid video{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--notte);display:block}
+.foglio.viola{background-color:rgba(37,23,94,.55);color:var(--nebbia)}
+.foglio.viola .ritratto img{box-shadow:8px 10px 0 var(--ciano)}
+.foglio .dentro{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(2rem,5vw,4rem);align-items:center;max-width:1200px;margin:0 auto}
+.foglio h2{font-size:clamp(2.2rem,4.6vw,3.8rem);margin:0 0 1.4rem}
+.foglio p{max-width:52ch}
+.ritratto img{width:100%;aspect-ratio:4/5;object-fit:cover;border:10px solid var(--notte);box-shadow:8px 10px 0 var(--viola);transform:rotate(2deg)}
+.premi{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.premi>span{padding:.35rem .7rem;font:600 .8rem var(--testo);background:var(--notte);color:var(--ciano)}
+.premi>span+span{color:var(--magenta)}
+.bacheca{display:grid;align-items:start;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,3vw,2.4rem);margin-top:2.5rem}
+.bacheca .foto img{aspect-ratio:1}
+
+.contatti{text-align:center;padding:1rem 0 3rem}
+.contatti h2{justify-content:center;font-size:clamp(3rem,8vw,6.5rem);margin:0 0 2rem}
+.canali{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.canali a{padding:.7rem 1.1rem;text-decoration:none;font:700 1rem var(--display);background:var(--carta);background-image:var(--grana);color:var(--notte);box-shadow:3px 4px 0 rgba(0,0,0,.5)}
+.canali a:nth-child(1){background-color:var(--ciano);transform:rotate(-2deg)}
+.canali a:nth-child(2){transform:rotate(1.5deg)}
+.canali a:nth-child(3){background-color:var(--magenta);transform:rotate(-1deg)}
+footer{text-align:center;color:var(--cenere);font-size:.85rem;padding:0 0 calc(2rem + env(safe-area-inset-bottom,0px))}
+
+@media (max-width:860px){
+  .barra{flex:1;padding-left:.35rem;justify-content:flex-end;background:none;min-height:0}
+  .barra ul{display:none;position:absolute;top:calc(100% + .2rem);left:var(--margine);right:var(--margine);flex-direction:column;gap:0;background:#D8CBFF;border-radius:18px;padding:.6rem 1.2rem;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+  header.aperto .barra ul{display:flex}
+  .barra ul a{display:block;padding:.85rem 0;font-size:.9rem}
+  .lingua{background:#D8CBFF}
+  .lingua button{color:var(--notte)}
+  .apri-menu{display:grid}
+  .apertura{grid-template-columns:1fr;min-height:auto}
+  .adesivo{width:58%}
+  .titolone .ruoli{text-align:left}
+  .titolone h1{justify-content:flex-start;font-size:14vw}
+  .foglio .dentro{grid-template-columns:1fr}
+  .bacheca{grid-template-columns:repeat(2,1fr)}
+}
+
+.pillola{flex:none;padding:.4rem .8rem;border-radius:999px;border:1px solid var(--viola);font:700 .75rem var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ciano);background:rgba(5,6,17,.5)}
+
+/* sezioni a giostra, sul modello di Popular this week */
+main.casa{overflow-x:clip}
+.giostra-sezione{margin:0 calc(var(--margine) * -1) clamp(3.5rem,7vw,5.5rem)}
+.intesta{text-align:center;padding:0 var(--margine)}
+.intesta .numero{display:block;margin:0 0 .4rem}
+.intesta h2{justify-content:center;font-size:clamp(2.8rem,6vw,4.8rem);margin:0 0 1rem}
+.intesta p{max-width:46ch;margin:0 auto;font-size:clamp(1rem,1.3vw,1.2rem)}
+.giostra-box{position:relative}
+.giostra{--w:clamp(190px,21vw,270px);display:flex;align-items:center;gap:clamp(1rem,2.2vw,2rem);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:3.2rem calc(50% - var(--w) / 2) 3.2rem}
+.giostra::-webkit-scrollbar{display:none}
+.scheda{position:relative;flex:0 0 var(--w);aspect-ratio:3/4;scroll-snap-align:center;border-radius:18px;overflow:hidden;text-decoration:none;color:var(--nebbia);transform:scale(.86);opacity:.7;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s,box-shadow .45s;box-shadow:0 18px 40px -22px rgba(0,0,0,.9);border:1.5px solid rgba(146,90,254,.35)}
+.giostra.salto .scheda{transition:none}
+.scheda.attiva{transform:scale(1.18);opacity:1;z-index:2;border-color:rgba(57,229,253,.6);box-shadow:0 12px 22px -14px rgba(0,0,0,.8)}
+.scheda img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fascia{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:.6rem;padding:.8rem .9rem;background:linear-gradient(180deg,rgba(146,90,254,.55),rgba(36,23,94,.92));backdrop-filter:blur(6px)}
+.fascia strong{font:800 .95rem/1.2 var(--display)}
+.fascia .anno{margin-left:auto;flex:none;padding:.25rem .6rem;border-radius:999px;border:1px solid rgba(233,236,250,.5);font:600 .7rem var(--testo)}
+.giostra-freccia{position:absolute;top:50%;z-index:3;width:46px;height:46px;margin-top:-23px;border-radius:50%;border:1.5px solid var(--viola);background:rgba(5,6,17,.8);color:var(--nebbia);font-size:1.2rem;cursor:pointer}
+.giostra-freccia.prima{left:var(--margine)}.giostra-freccia.dopo{right:var(--margine)}
+.giostra-freccia:hover{background:var(--viola);color:var(--notte)}
+.sotto-giostra{display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap}
+.sotto-giostra .entra,.sotto-giostra .pillola{margin:0}
+@media (max-width:860px){.giostra{--w:58vw}.giostra-freccia{display:none}}
+@media (prefers-reduced-motion:reduce){.scintilla{animation:none}}
+
+/* ===== pagine interne nello stile nuovo ===== */
+header{flex-wrap:nowrap;backdrop-filter:none;-webkit-backdrop-filter:none}
+.barra ul a[aria-current="page"]{border-color:var(--notte)}
+.testa-pagina h1.ritaglio{background:none;-webkit-background-clip:initial;background-clip:initial;color:inherit;font-size:clamp(3.2rem,9vw,7.5rem);letter-spacing:0;line-height:1}
+.testa-pagina .briciole a:hover{color:var(--ciano)}
+.indice a{border-color:rgba(146,90,254,.45)}
+.indice a:hover{border-color:var(--ciano);color:var(--nebbia)}
+.serie-testo h2{color:var(--nebbia)}
+.serie-testo .anno{color:var(--magenta);font-size:1.6rem;font-weight:800}
+.divisore-anno{-webkit-text-stroke:2px var(--viola)}
+/* pagine interne: ogni serie è una fascia con una galleria a righe giustificate,
+   alternando fasce scure (come Color+City) e fasce lilla con cornici bianche (come Breeze) */
+main#inizio>section.serie,main#inizio>section.singoli{display:block;padding:clamp(2.5rem,5vw,4rem) var(--margine);background:rgba(20,22,52,.5)}
+main#inizio>section.serie:nth-of-type(even),main#inizio>section.singoli:nth-of-type(even){background:rgba(216,203,255,.72);color:var(--notte)}
+.serie-testo{position:static;text-align:center;justify-items:center;margin:0 auto clamp(1.6rem,3vw,2.4rem);max-width:60ch}
+.serie-testo h2{font-size:clamp(1.6rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:.04em;color:inherit}
+.serie-testo .anno{font-size:1.1rem}
+.serie-testo p{color:inherit;opacity:.75}
+section:nth-of-type(even) .serie-testo .anno{color:#7a2bd6}
+/* fasce scure: mosaico a colonne fitte, come Color+City */
+.muro{display:block;columns:var(--c,4);column-gap:8px;max-width:calc(var(--c,4) * 330px);margin:0 auto}
+.muro .lavoro{display:block;margin:0 0 8px!important;padding:0;background:none;box-shadow:none;rotate:none;overflow:hidden;position:relative;break-inside:avoid;transform:translateZ(0)}
+main#inizio>section.singoli{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.8rem,2vw,1.4rem);padding-inline:max(var(--margine),calc((100% - 1300px) / 2))}
+/* fasce lilla: righe centrate della stessa altezza con cornice bianca, come Breeze */
+section:nth-of-type(even) .muro,.muro:not(.fitto){display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.8rem,2vw,1.4rem);columns:auto;max-width:1300px}
+section:nth-of-type(even) .muro .lavoro,.muro:not(.fitto) .lavoro,.singoli .lavoro{flex:0 0 auto;width:calc(var(--ar) * clamp(170px,21vw,290px));max-width:100%;margin:0!important;border:6px solid #fff;box-shadow:0 10px 22px -12px rgba(14,18,52,.7);rotate:none;padding:0;background:#fff;overflow:hidden;position:relative}
+.singoli .lavoro{width:calc(var(--ar) * clamp(220px,30vw,420px))}
+main#inizio>section.singoli:nth-of-type(odd) .lavoro{border-color:#1d2040;background:#1d2040}
+.lavoro .cornice{aspect-ratio:var(--ar)!important;border-radius:0;background:#1d2040}
+.lavoro .cornice img{width:100%;height:100%!important;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.lavoro:hover .cornice img{transform:scale(1.05)}
+.lavoro:hover .cornice{transform:none;box-shadow:none!important}
+.muro .lavoro figcaption,.singoli .lavoro figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:1.6rem .7rem .55rem;background:linear-gradient(transparent,rgba(5,6,17,.85));color:var(--nebbia);font:600 .78rem/1.3 var(--testo);pointer-events:none;opacity:0;transition:opacity .3s}
+.lavoro:hover figcaption,.lavoro:focus-within figcaption{opacity:1}
+.singoli .lavoro figcaption{opacity:1;display:grid;gap:.1rem}
+.singoli figcaption strong{color:var(--nebbia);font-size:1rem}
+.singoli figcaption span{color:var(--nebbia);opacity:.8;font-size:.72rem}
+.serie .vai{margin-top:.6rem}
+.video-lavoro{max-width:960px;margin:0 auto}
+.divisore-anno{text-align:center}
+@media (max-width:860px){.muro .lavoro,.singoli .lavoro{flex-basis:calc(var(--ar) * 120px)}.lavoro figcaption{opacity:1}}
+main#inizio>section:nth-of-type(odd) .muro:not(.fitto){gap:8px}
+main#inizio>section:nth-of-type(odd) .muro:not(.fitto) .lavoro{border:0;box-shadow:none;background:none;width:calc(var(--ar) * clamp(170px,24vw,320px))}
+section:nth-of-type(even) .muro.fitto{columns:auto}
+main#inizio{overflow-x:clip}
+/* stessa altezza per tutte, larghezza secondo l'orientamento dell'opera */
+.muro,.muro.fitto,section:nth-of-type(even) .muro,.muro:not(.fitto),main#inizio>section.singoli{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:10px;columns:auto;max-width:1300px;margin-inline:auto;--h:clamp(280px,31vw,460px)}
+main#inizio>section.singoli{max-width:none;padding-inline:var(--margine)}
+.muro .lavoro,.muro:not(.fitto) .lavoro,section:nth-of-type(even) .muro .lavoro,.singoli .lavoro,main#inizio>section:nth-of-type(odd) .muro:not(.fitto) .lavoro,main#inizio>section.singoli:nth-of-type(odd) .lavoro{flex:0 0 auto;width:calc(var(--h) * var(--f));max-width:100%;margin:0!important;border:0!important;background:none!important;box-shadow:0 10px 22px -14px rgba(0,0,0,.7)!important;padding:0;rotate:none}
+.lavoro.o-p{--f:.8}.lavoro.o-q{--f:1}.lavoro.o-l{--f:1.3333}
+.lavoro .cornice{aspect-ratio:var(--f)!important}
+.singoli .lavoro::before{display:none}
+@media (max-width:860px){.muro,.muro.fitto,section:nth-of-type(even) .muro,.muro:not(.fitto),main#inizio>section.singoli{--h:56vw}}
+/* polaroid delle origini: i disegni sono orizzontali */
+#origini .foto img{aspect-ratio:4/3}
+
+/* opere scontornate (png senza sfondo): niente riquadro, l'opera sta intera */
+html body main#inizio>section .lavoro.scontornato.scontornato.scontornato{box-shadow:none!important;background:none!important;overflow:visible}
+.lavoro.scontornato .cornice{background:none!important;box-shadow:none!important}
+.lavoro.scontornato .cornice img{object-fit:contain;filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}
+/* "Prossima sezione": il nome della sezione ha la stessa grandezza su tutte le pagine */
+.prossima strong span{display:inline;font-size:inherit;color:inherit;margin:0}
+.prossima strong{font-size:clamp(2.5rem,7.5vw,5.75rem)}
+/* nessuna immagine tagliata: stessa altezza, larghezza secondo la proporzione reale dell'opera */
+.lavoro.o-p,.lavoro.o-q,.lavoro.o-l{--f:var(--ar)}
+.serie-testo .vai,.serie .vai{justify-self:center;align-self:center;margin-left:auto;margin-right:auto;display:table}
+
+/* ===== adattabilità ai vari schermi ===== */
+/* apertura: FLAYRIS si misura sulla sua colonna, così non esce mai dallo spazio */
+.titolone{container-type:inline-size;min-width:0}
+.titolone h1{font-size:min(16cqi,9.5rem);flex-wrap:nowrap}
+.titolone .ruoli{font-size:clamp(.85rem,2.6cqi,1.3rem);max-width:none;text-wrap:balance}
+.apertura{max-width:1500px;margin-inline:auto;padding-inline:var(--margine);margin-top:1.6rem;min-height:min(calc(100svh - 7rem),900px)}
+main.casa,.foglio .dentro{max-width:1500px}
+main.casa{margin-inline:auto}
+/* barra: tra telefono e computer le voci si stringono invece di andare a capo */
+@media (min-width:861px) and (max-width:1100px){
+  .barra{padding-left:1.1rem;gap:.6rem}
+  .barra ul{gap:clamp(.7rem,1.6vw,1.4rem)}
+  .barra ul a{font-size:.72rem;letter-spacing:.04em}
+  .marchio{font-size:1.15rem}
+}
+/* tablet */
+@media (max-width:860px){
+  .apertura{min-height:auto;gap:1.2rem;padding-block:clamp(1.5rem,5vw,3rem) clamp(2rem,6vw,3rem);margin-top:.6rem}
+  .apertura{grid-template-columns:.75fr 1.25fr;align-items:center}
+  .adesivo{width:100%;max-width:260px;justify-self:center}
+  .titolone .ruoli{text-align:right}
+  .titolone h1{justify-content:flex-end}
+  .titolone h1{font-size:min(16cqi,8rem)}
+  .giostra{--w:min(56vw,300px);padding-block:2.6rem}
+  .foglio .dentro{grid-template-columns:.8fr 1.2fr;gap:2rem;align-items:start}
+  .ritratto{max-width:min(320px,80%)}
+  .muro,.muro.fitto,section:nth-of-type(even) .muro,.muro:not(.fitto),main#inizio>section.singoli{--h:min(42vw,340px)}
+  .bacheca{grid-template-columns:repeat(4,1fr);gap:1rem}
+}
+/* telefono */
+@media (max-width:600px){
+  .apertura{grid-template-columns:1fr}
+  .adesivo{width:min(52%,220px);justify-self:start}
+  .titolone .ruoli{text-align:left}
+  .titolone h1{justify-content:flex-start}
+  .giostra{--w:60vw}
+  .scheda.attiva{transform:scale(1.1)}
+  .bacheca{grid-template-columns:repeat(2,1fr);gap:1.4rem 1rem}
+  .muro,.muro.fitto,section:nth-of-type(even) .muro,.muro:not(.fitto),main#inizio>section.singoli{--h:56vw;gap:8px}
+  .foglio .dentro{grid-template-columns:1fr}
+  .foglio h2{font-size:clamp(1.7rem,8vw,2.4rem)}
+  .contatti h2{font-size:clamp(2.2rem,11vw,3.5rem)}
+  .canali a{font-size:.9rem}
+  .fascia strong{font-size:.85rem}
+  .intesta h2{font-size:clamp(2.2rem,10vw,3rem)}
+}
+/* schermi molto stretti */
+@media (max-width:380px){
+  .marchio span{font-size:1.1rem}
+  .lingua button{padding:.5rem .6rem}
+}
+/* schermi bassi in orizzontale (telefono girato) */
+@media (max-height:500px) and (orientation:landscape){
+  .apertura{min-height:auto;grid-template-columns:.6fr 1.4fr}
+  .adesivo{width:min(100%,200px)}
+  header{position:relative}
+}
+/* la linea del drago continua anche dietro la testata: in cima la testata è trasparente,
+   quando scorri prende un velo scuro leggero così il contenuto non si confonde col menu */
+header{background:transparent;transition:background-color .3s}
+header.scorso{background:rgba(5,6,17,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+/* testata e ritratto, ritocchi dai commenti */
+/* nome e voci del menu sulla stessa linea: il nome scende quel poco che serve
+   perché le sue maiuscole stiano in asse con quelle del menu */
+.marchio span{top:.125em}
+@media (min-width:861px){
+  /* più aria tra il nome e la barra; la barra resta tonda e finisce sul margine destro della pagina,
+     le voci del menu partono dal suo lato sinistro */
+  header{gap:clamp(1.6rem,3vw,3rem)}
+}
+/* il ritratto di "chi c'è dietro" si stacca dal bordo e sta al centro della sua colonna */
+@media (min-width:601px){
+  #dietro .ritratto{justify-self:center;width:100%}
+}
+/* cifre nei titoli delle serie: alte come le maiuscole, e lo zero più stretto della O (0ics, 1000 Project) */
+.serie-testo h2{font-variant-numeric:lining-nums}
+.serie-testo h2 .zero{display:inline-block;transform:scaleX(.72);margin-inline:-.1em}
+/* foto girate di 90° (elenco RUOTATE in _build/build.py): larghe quanto è alta la fila, cioè la scala che avevano da coricate,
+   ma mai più alte dello schermo (portatili bassi) */
+.muro .lavoro.ruotata{width:min(var(--h),calc((100svh - 100px) * var(--ar)))!important}
+
+/* ===== giro su telefoni, tablet e schermi bassi ===== */
+/* muri di foto: dal telefono al tablet in verticale (e telefono girato) le foto non vanno più
+   una per riga a zig-zag ma in file piene, tutte alte uguali nella stessa fila: ognuna parte
+   dalla sua larghezza a --h e cresce in proporzione al suo formato fino a riempire la riga */
+@media (max-width:860px),(max-height:500px) and (orientation:landscape){
+  .muro,.muro.fitto,section:nth-of-type(even) .muro,.muro:not(.fitto),main#inizio>section.singoli{--h:min(clamp(120px,34vw,220px),55svh);justify-content:center;gap:8px}
+  .muro .lavoro,.muro:not(.fitto) .lavoro,section:nth-of-type(even) .muro .lavoro,.singoli .lavoro,main#inizio>section:nth-of-type(odd) .muro:not(.fitto) .lavoro,main#inizio>section.singoli:nth-of-type(odd) .lavoro{flex:calc(var(--ar) * 100) 1 calc(var(--h) * var(--ar));width:auto;max-width:min(calc(var(--h) * var(--ar) * 1.9),calc((100svh - 100px) * var(--ar)))}
+  .muro .lavoro.ruotata{flex-basis:var(--h);width:auto!important;max-width:min(calc(var(--h) * 1.9),calc((100svh - 100px) * var(--ar)))}
+  /* una fila che non si riempie (l'ultima, o una serie con due foto) cresce al massimo
+     fino a poco meno del doppio e resta al centro, così le foto non diventano enormi */
+  /* didascalie sulle foto strette (schermate delle app): vanno a capo invece di uscire */
+  .muro .lavoro figcaption,.singoli .lavoro figcaption{padding:1.2rem .45rem .4rem;font-size:.72rem;overflow-wrap:anywhere;hyphens:auto}
+}
+/* home: il numero della sezione non tocca più le lettere ritagliate, che sono un po' ruotate */
+.intesta .numero{margin-bottom:.9rem}
+/* telefono girato: le schede delle giostre stanno nell'altezza dello schermo */
+@media (max-height:500px) and (orientation:landscape){
+  .giostra{--w:min(30vw,40svh);padding-block:1.2rem}
+}
+/* telefoni stretti (fino a 400px, dove stanno tanti Android da 384): testata più compatta perché
+   nome, lingua e menu stiano nello schermo; sotto i 360 anche i titoli delle serie si stringono */
+@media (max-width:400px){
+  header{gap:.5rem}
+  .marchio{gap:.35rem;letter-spacing:.03em}
+  .marchio img{width:26px}
+  .marchio span{font-size:1.05rem}
+  .lingua button{padding:.45rem .55rem}
+  .apri-menu{width:40px;height:40px}
+}
+@media (max-width:360px){
+  .marchio span{font-size:1rem}
+  .lingua button{padding:.45rem .5rem}
+  .serie-testo h2{font-size:clamp(1.25rem,7.2vw,1.6rem);overflow-wrap:anywhere}
+}
+/* "Talk to me" sul telefono: le tre parole stanno su una riga invece di lasciare "ME" da solo */
+@media (max-width:600px){.contatti h2{font-size:clamp(1.9rem,9.5vw,3.5rem)}}
+/* schermi molto grandi (monitor 27" a 2560px, ultrawide a 3440px): il sito si ingrandisce
+   in proporzione invece di restare piccolo in mezzo al nero. Solo testata, contenuto e piede:
+   la linea del drago e la lente restano fuori dallo zoom */
+@media (min-width:2200px){header,main,footer,.apertura,.lente-barra,.lente-dida,.lente .freccia{zoom:1.25}}
+@media (min-width:2500px){header,main,footer,.apertura,.lente-barra,.lente-dida,.lente .freccia{zoom:1.4}}
+/* telefono: file più alte (circa metà della larghezza utile). Due verticali stanno ancora
+   affiancate, ma un'orizzontale e una verticale vanno su righe diverse invece di
+   rimpicciolirsi entrambe per stare alla stessa altezza */
+@media (max-width:600px){
+  .muro,.muro.fitto,section:nth-of-type(even) .muro,.muro:not(.fitto),main#inizio>section.singoli{--h:min(45vw,55svh)}
+}
