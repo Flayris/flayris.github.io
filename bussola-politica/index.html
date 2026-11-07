@@ -209,17 +209,38 @@ ul.pts{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
 .note p{margin:0}
 
 /* FOOTER */
-footer{background:var(--sand);padding-block:36px 0;margin-top:8px}
-.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:18px}
-.rescat{display:flex;flex-direction:column;gap:8px;min-width:0}
-.rescat>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
-.rescat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+footer{background:var(--sage-deep);color:#F3EFE6;margin-top:8px}
+@media (prefers-color-scheme: dark){footer{background:#141B16}}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;padding-block:40px 28px}
+.fbrand{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.fbrand .logo-mark{background:#F3EFE6}
+.fbrand .logo-mark svg{stroke:var(--sage-deep)}
+.fbrand p{margin:0;opacity:.8;max-width:32ch;font-size:.95rem}
+.fcol b{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:12px}
+.fcol ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.fcol a,.flink{color:#F3EFE6;text-decoration:none;font-weight:700;font-size:.95rem;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.fcol a:hover,.flink:hover{text-decoration:underline;text-underline-offset:3px}
+.fmeta li{font-size:.92rem;opacity:.85;display:flex;align-items:center;gap:8px}
+.fbottom{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;padding-block:16px;border-top:1px solid rgba(243,239,230,.18);font-size:.85rem;opacity:.85}
+.fbottom a{color:#F3EFE6;font-weight:700}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}.fbrand{grid-column:1/-1}}
+@media (max-width:480px){.fgrid{grid-template-columns:1fr}}
+/* MODAL */
+.modal{border:0;padding:clamp(20px,3vw,32px);border-radius:var(--r-lg);background:var(--bg);color:var(--ink);width:min(920px,calc(100vw - 24px));max-height:calc(100dvh - 32px);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.modal.small{width:min(520px,calc(100vw - 24px))}
+.modal::backdrop{background:rgba(25,35,28,.55);backdrop-filter:blur(3px)}
+.mhead{position:sticky;top:calc(-1 * clamp(20px,3vw,32px));z-index:2;background:var(--bg);padding-block:4px 8px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.mclose{width:42px;height:42px;border-radius:50%;border:0;background:var(--sand);font-size:1.6rem;line-height:1;cursor:pointer;flex:0 0 auto}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;margin-top:20px}
+.rescat{display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:16px}
+.rescat>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--terra-deep)}
+.rescat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .rescat a{font-weight:700;text-decoration:none;border-bottom:1px solid var(--line)}
 .rescat a:hover{border-color:currentColor}
 .rescat span{display:block;font-size:.84rem;color:var(--muted)}
-.other{margin-top:26px;font-size:.92rem;color:var(--muted)}
+.other{margin-top:20px;font-size:.9rem;color:var(--muted)}
 .other a{color:var(--ink);font-weight:700}
-.bottom{margin-top:30px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-size:.85rem;color:var(--muted)}
+@media (max-width:560px){.modal{width:100vw;max-width:100vw;max-height:92dvh;margin:auto 0 0;border-radius:var(--r-lg) var(--r-lg) 0 0}}
 @media (prefers-reduced-motion:no-preference){.slide{animation:fade .35s ease}@keyframes fade{from{opacity:.4;transform:translateX(8px)}to{opacity:1;transform:none}}.bt i{transition:width .6s ease}}
 </style>
 </head>
@@ -342,15 +363,62 @@ footer{background:var(--sand);padding-block:36px 0;margin-top:8px}
   </main>
 
   <footer>
-    <div class="in">
-      <h2>Risorse ufficiali</h2>
-      <p class="lead">I siti delle istituzioni da cui prendo le informazioni.</p>
-      <div class="res" id="res"></div>
-      <p class="other" id="other"></p>
-      <div class="bottom"><span>© Bussola Politica · <span data-upd></span></span><span>Posizioni riassunte in modo neutrale</span><span>Aggiornamento ogni lunedì</span></div>
+    <div class="in fgrid">
+      <div class="fbrand">
+        <a class="logo" href="#oggi" data-v="oggi"><span class="logo-mark" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FBF7EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="#C9553F" stroke="#C9553F"/></svg></span><span><b>Bussola Politica</b></span></a>
+        <p>La politica italiana in pezzi piccoli. Fatti da fonti ufficiali, nessuna opinione.</p>
+        <button class="cta" id="openRes">Fonti e risorse ufficiali</button>
+      </div>
+      <div class="fcol"><b>Sezioni</b>
+        <ul>
+          <li><a href="#oggi">Oggi</a></li>
+          <li><a href="#partiti">Partiti</a></li>
+          <li><a href="#temi">Temi</a></li>
+          <li><a href="#calendario">Calendario</a></li>
+          <li><a href="#voto">Come si vota</a></li>
+        </ul>
+      </div>
+      <div class="fcol"><b>Informazioni</b>
+        <ul>
+          <li><button class="flink" data-open="res">Risorse ufficiali</button></li>
+          <li><button class="flink" data-open="met">Come lavoriamo</button></li>
+          <li><a href="https://elezioni.interno.gov.it" target="_blank" rel="noopener">Risultati elettorali ↗</a></li>
+          <li><a href="https://www.esteri.it" target="_blank" rel="noopener">Votare dall'estero ↗</a></li>
+        </ul>
+      </div>
+      <div class="fcol"><b>Aggiornamenti</b>
+        <ul class="fmeta">
+          <li><span class="dotp" style="background:var(--sage)"></span> Ultimo: <span data-upd></span></li>
+          <li>Nuove notizie ogni lunedì</li>
+          <li>Prossime politiche: autunno 2027</li>
+        </ul>
+      </div>
+    </div>
+    <div class="in fbottom">
+      <span>© 2026 Bussola Politica</span>
+      <span>Un progetto di <a href="https://www.flayris.art" target="_blank" rel="noopener">Flayris</a></span>
+      <a href="#" id="toTop">Torna su ↑</a>
     </div>
   </footer>
 </div>
+
+<dialog class="modal" id="dlg-res" aria-labelledby="res-title">
+  <div class="mhead"><div><span class="tag">Fonti</span><h2 id="res-title">Risorse ufficiali</h2></div><button class="mclose" data-close aria-label="Chiudi">×</button></div>
+  <p class="lead">I siti delle istituzioni da cui prendo le informazioni. Tocca per aprire.</p>
+  <div class="res" id="res"></div>
+  <p class="other" id="other"></p>
+</dialog>
+
+<dialog class="modal small" id="dlg-met" aria-labelledby="met-title">
+  <div class="mhead"><div><span class="tag">Metodo</span><h2 id="met-title">Come lavoriamo</h2></div><button class="mclose" data-close aria-label="Chiudi">×</button></div>
+  <ul class="pts">
+    <li><b>Prima le fonti ufficiali</b>: Camera, Senato, Governo, ministeri.</li>
+    <li><b>Giornali solo se serve</b>: sondaggi e posizioni dei partiti.</li>
+    <li><b>Ogni notizia ha il suo link</b>, con etichetta Ufficiale o Stampa.</li>
+    <li><b>Neutrale</b>: stessa cura per tutti, nessun consiglio di voto.</li>
+    <li><b>Aggiornato ogni lunedì</b>.</li>
+  </ul>
+</dialog>
 
 <script id="dati" type="application/json">
 {
@@ -1060,6 +1128,15 @@ footer{background:var(--sand);padding-block:36px 0;margin-top:8px}
   var by={},order=[]; D.siti.forEach(function(x){if(!by[x.cat]){by[x.cat]=[];order.push(x.cat)}by[x.cat].push(x)});
   document.getElementById('res').innerHTML=order.map(function(c){return '<div class="rescat"><b>'+esc(c)+'</b><ul>'+by[c].map(function(x){return '<li><a href="'+x.url+'" target="_blank" rel="noopener">'+esc(x.nome)+'</a><span>'+esc(x.cosa)+'</span></li>'}).join('')+'</ul></div>'}).join('');
   document.getElementById('other').innerHTML='Sondaggi e posizioni dei partiti non sono su siti istituzionali. Fonti di stampa: '+D.fonti.map(function(f){return '<a href="'+f[1]+'" target="_blank" rel="noopener">'+esc(f[0])+'</a>'}).join(' · ');
+  // MODALI
+  function openDlg(id){var d=document.getElementById('dlg-'+id);if(d&&d.showModal)d.showModal()}
+  document.getElementById('openRes').onclick=function(){openDlg('res')};
+  document.querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){openDlg(b.dataset.open)}});
+  document.querySelectorAll('dialog').forEach(function(d){
+    d.querySelector('[data-close]').onclick=function(){d.close()};
+    d.addEventListener('click',function(e){if(e.target===d)d.close()});
+  });
+  document.getElementById('toTop').onclick=function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})};
 })();
 </script>
 </body>
