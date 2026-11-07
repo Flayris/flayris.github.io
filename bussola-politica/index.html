@@ -3,232 +3,353 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="La politica italiana in schede brevi: notizie da fonti ufficiali, partiti, temi, sondaggi e date del voto 2027.">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Bussola Politica</title>
+<meta name="description" content="La politica italiana in schede brevi: notizie da fonti ufficiali, partiti, temi, sondaggi e date del voto 2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
 <style>
-/* Layout: una colonna stretta, schede brevi, menu a pillole fisso in alto. Colore = partito, mai decorazione. */
+/* Layout: pagina "a cartolina" su fondo salvia; schede morbide e arrotondate; tricolore reso in salvia, crema e terracotta. */
 :root{
-  --bg:#F6F7F5; --surface:#FFFFFF; --ink:#1B2420; --muted:#59645E; --line:#DDE3DF;
-  --accent:#00703C; --ok:#00703C; --accent-soft:#E3F2EA; --verde:#009246; --bianco:#FFFFFF; --rosso:#CE2B37; --dx:#1F4E9C; --sx:#C8261E; --altro:#6B7280;
-  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --page:#A9BCA8; --bg:#FBF7EF; --surface:#FFFFFF; --sand:#F1EADC;
+  --sage:#6F8F72; --sage-deep:#3E5A44; --sage-soft:#DCE6D8;
+  --terra:#C9553F; --terra-deep:#A8402D; --terra-soft:#F6DED5;
+  --ink:#23302A; --muted:#5F6B63; --line:#E4DCCB;
+  --shadow:0 10px 30px -14px rgba(46,64,50,.35);
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
   --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r-lg:28px; --r-md:20px; --r-sm:14px;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F1412; --surface:#18201C; --ink:#EAF0EC; --muted:#9BA8A0; --line:#2A3630;
-  --accent:#5FD08F; --ok:#5FD08F; --accent-soft:#16301F; --verde:#1FA35A; --bianco:#E8ECEA; --rosso:#E0505B; --dx:#7FA6EE; --sx:#F07A72; --altro:#9AA3B0; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0F1412; --surface:#18201C; --ink:#EAF0EC; --muted:#9BA8A0; --line:#2A3630;
-  --accent:#5FD08F; --ok:#5FD08F; --accent-soft:#16301F; --verde:#1FA35A; --bianco:#E8ECEA; --rosso:#E0505B; --dx:#7FA6EE; --sx:#F07A72; --altro:#9AA3B0; color-scheme:dark}
+@media (prefers-color-scheme: dark){:root{
+  --page:#18201B; --bg:#1F2822; --surface:#28332C; --sand:#2E3A32;
+  --sage:#8FB293; --sage-deep:#B9D3BC; --sage-soft:#304236;
+  --terra:#E2775F; --terra-deep:#F0937D; --terra-soft:#45302A;
+  --ink:#EEF2EC; --muted:#A7B3AA; --line:#3A4840;
+  --shadow:0 10px 30px -14px rgba(0,0,0,.6); color-scheme:dark}}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-.wrap{max-width:720px;margin:0 auto}
-header.top{padding-block:24px 8px}
-h1{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
-.sub{color:var(--muted);margin:6px 0 0}
-.upd{display:inline-flex;gap:6px;align-items:center;font-size:.85rem;color:var(--muted);margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
-.dot{width:8px;height:8px;border-radius:50%;background:#2E9D5B}
-nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-4px;padding-inline:4px}
-nav.tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 .95rem var(--body);padding:9px 16px;border-radius:999px;cursor:pointer}
-.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.tab:focus-visible,.chip:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-section.view{display:flex;flex-direction:column;gap:14px;padding-top:8px}
-h2{font-family:var(--display);font-weight:800;font-size:1.4rem;margin:12px 0 0}
-.hint{color:var(--muted);font-size:.95rem;margin:0}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8rem;color:var(--muted)}
-.tag{font-weight:700;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
-.pchip{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:.8rem;padding:2px 9px 2px 6px;border-radius:999px;border:1px solid var(--line)}
-.pchip i{width:10px;height:10px;border-radius:50%;display:inline-block;flex:0 0 auto}
-.title{font-weight:700;font-size:1.05rem;margin:0}
-.why{margin:0;font-size:.95rem;color:var(--muted)}
-.why b{color:var(--ink)}
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media (max-width:520px){.quick{grid-template-columns:1fr}}
-.qbtn{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:2px}
-.qbtn b{font-family:var(--display);font-size:1.05rem}
-.qbtn span{color:var(--muted);font-size:.85rem}
-/* poll bars */
-.poll{display:flex;flex-direction:column;gap:8px}
-.prow{display:grid;grid-template-columns:96px 1fr 48px;gap:8px;align-items:center;font-size:.9rem}
-.bar{height:14px;border-radius:4px;background:var(--line);overflow:hidden}
-.bar>div{height:100%}
-.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
-.coal{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.coal .card{align-items:flex-start}
-.big{font-family:var(--display);font-weight:800;font-size:2rem;font-variant-numeric:tabular-nums;line-height:1}
-/* filters */
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 .9rem var(--body);padding:7px 13px;border-radius:999px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-/* party cards */
-details.party{background:var(--surface);border:1px solid var(--line);border-left:8px solid var(--pc);border-radius:14px;overflow:hidden}
-details.party summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
-details.party summary::-webkit-details-marker{display:none}
-.pname{font-family:var(--display);font-weight:800;font-size:1.15rem;margin:0}
-.pleader{color:var(--muted);font-size:.9rem;grid-column:1}
-.ppoll{grid-row:1/3;grid-column:2;text-align:right}
-.ppoll b{font-family:var(--display);font-size:1.4rem;font-variant-numeric:tabular-nums;display:block;line-height:1}
-.ppoll span{font-size:.75rem;color:var(--muted)}
-.pbody{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px}
-.side{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-ul.pts{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
-.more{font-size:.85rem;color:var(--accent);font-weight:700}
-/* themes */
-.trow{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
-.trow:first-child{border-top:0}
-.trow .pchip{justify-self:start}
-.unk{color:var(--muted);font-style:italic}
-/* timeline */
-.tl{display:flex;flex-direction:column;gap:0;border-left:3px solid var(--line);margin-left:6px}
-.ti{position:relative;padding:0 0 16px 18px}
-.ti::before{content:"";position:absolute;left:-8px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--muted)}
-.ti.fut::before{border-color:var(--accent);background:var(--accent)}
-.ti .d{font-size:.8rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
-.ti p{margin:2px 0 0}
-.note{background:var(--accent-soft);border-radius:14px;padding:14px 16px;font-size:.95rem}
-.note p{margin:0}
-a.site{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--sc);border-radius:14px;padding:12px 16px}
-a.site:hover{border-color:var(--sc)}
-a.site:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-a.site b{font-size:1.02rem}
-a.site span{color:var(--muted);font-size:.9rem;grid-column:1}
-a.site em{grid-row:1/3;grid-column:2;font-style:normal;font-size:.8rem;color:var(--muted);text-align:right;overflow-wrap:anywhere;max-width:120px}
-.src{font-size:.8rem;color:var(--muted)}
-.src a{color:var(--accent)}
-footer{margin-top:36px;padding-top:8px;border-top:2px solid var(--line);font-size:.9rem;color:var(--muted);display:flex;flex-direction:column;gap:10px}
-footer a{color:var(--accent);font-weight:700}
-.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.rescat{display:flex;flex-direction:column;gap:6px;min-width:0}
-.rescat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.rescat li{display:flex;flex-direction:column}
-.rescat li span{font-size:.82rem}
-.srcb{align-self:flex-start;display:inline-block;font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:6px;text-decoration:none;border:1px solid}
-.srcb.u{color:var(--ok);border-color:var(--ok);background:color-mix(in srgb,#2E9D5B 12%,transparent)}
-.srcb.s{color:var(--muted);border-color:var(--line)}
-@media (max-width:440px){.trow{grid-template-columns:1fr;gap:6px}.prow{grid-template-columns:84px 1fr 44px}h1{font-size:1.7rem}}
-@media (prefers-reduced-motion:no-preference){.bar>div{transition:width .5s ease}}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
+  padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));padding-block:14px 14px}
+img{max-width:100%}
+[hidden]{display:none!important}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+.sheet{max-width:1180px;margin:0 auto;background:var(--bg);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.in{padding-inline:clamp(16px,4vw,48px)}
 
-.flag{position:fixed;inset:0 0 auto;height:calc(6px + env(safe-area-inset-top,0px));z-index:20;background:linear-gradient(90deg,var(--verde) 0 33.33%,var(--bianco) 33.33% 66.66%,var(--rosso) 66.66%);box-shadow:0 1px 0 var(--line)}
-header.top{padding-block:34px 8px}
-.brand{display:flex;align-items:center;gap:12px}
-.mark{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:conic-gradient(var(--verde) 0 120deg,var(--bianco) 120deg 240deg,var(--rosso) 240deg);border:2px solid var(--line);display:grid;place-items:center}
-.mark::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--ink)}
-h1 em{font-style:normal;color:var(--rosso)}
-.tab[aria-selected="true"]{background:var(--verde);border-color:var(--verde);color:#fff}
-.chip[aria-pressed="true"]{background:var(--verde);border-color:var(--verde);color:#fff}
-.tag{background:color-mix(in srgb,var(--rosso) 12%,transparent);color:var(--rosso)}
-.dot{background:var(--verde)}
-footer{border-top:4px solid transparent;border-image:linear-gradient(90deg,var(--verde) 0 33.33%,var(--line) 33.33% 66.66%,var(--rosso) 66.66%) 1}
-nav.tabs{top:calc(6px + env(safe-area-inset-top,0px))}
+/* NAV */
+.nav{display:flex;align-items:center;gap:16px;padding-block:20px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.logo-mark{width:44px;height:44px;border-radius:50%;background:var(--sage-deep);display:grid;place-items:center;flex:0 0 auto}
+.logo b{font-family:var(--display);font-size:1.3rem;line-height:1;display:block}
+.logo small{color:var(--muted);font-size:.8rem}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:none;padding:8px 12px;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.cta{border:0;background:var(--terra);color:#fff;font-weight:700;padding:11px 20px;border-radius:999px;cursor:pointer;white-space:nowrap;box-shadow:0 6px 14px -8px var(--terra)}
+.cta.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
+@media (max-width:820px){
+  .nav{gap:10px}
+  .tabs{order:3;width:100%;margin-inline:-4px;padding-bottom:2px}
+  .logo small{display:none}
+  .nav .cta{padding:9px 14px;font-size:.88rem}
+  .tab{background:var(--sand);border-radius:999px;border:0}
+  .tab[aria-selected="true"]{background:var(--sage-deep);color:var(--bg)}
+}
+
+/* COMMON */
+.view{display:flex;flex-direction:column;gap:28px;padding-bottom:40px}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;line-height:1.12}
+h2{font-size:clamp(1.5rem,3vw,2rem)}
+.lead{color:var(--muted);margin:6px 0 0;max-width:60ch}
+.sec-head{display:flex;align-items:center;gap:14px}
+.sec-head::before,.sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-head h2{font-size:1.4rem;text-align:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:18px;min-width:0}
+.panel{background:var(--sage);color:#fff;border-radius:var(--r-lg);padding:clamp(20px,3vw,32px);box-shadow:var(--shadow)}
+@media (prefers-color-scheme: dark){.panel{background:var(--sage-soft);color:var(--ink)}}
+.pill{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:9px 16px;font-weight:700;font-size:.92rem;cursor:pointer;background:var(--sand);color:var(--ink);text-decoration:none;white-space:nowrap}
+.pill[aria-pressed="true"]{background:var(--sage-deep);color:var(--bg)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.ico{width:46px;height:46px;border-radius:50%;background:var(--sage-soft);color:var(--sage-deep);display:grid;place-items:center;flex:0 0 auto}
+.ico svg{width:24px;height:24px}
+.dotp{width:10px;height:10px;border-radius:50%;display:inline-block;flex:0 0 auto}
+.pchip{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:.78rem;padding:3px 9px 3px 6px;border-radius:999px;background:var(--sand)}
+.tag{font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--terra-deep)}
+
+/* HERO (Oggi) */
+.hero{position:relative;background:var(--sage);border-radius:var(--r-lg);padding:clamp(24px,4vw,48px);overflow:hidden;color:#fff;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+@media (prefers-color-scheme: dark){.hero{background:var(--sage-soft);color:var(--ink)}}
+.hero::after{content:"";position:absolute;right:-80px;bottom:-140px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem)}
+.hero p{margin:12px 0 22px;max-width:40ch;opacity:.92}
+.hero-side{position:relative;z-index:1;background:var(--bg);color:var(--ink);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
+.hero-side .row{display:flex;gap:12px;align-items:center}
+.hero-side b{font-size:1.02rem}
+.hero-side .row>div>span{display:block;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat .f{display:flex;flex-direction:column;gap:8px}
+.feat b{font-size:1.02rem}
+.feat span{color:var(--muted);font-size:.92rem}
+@media (max-width:700px){.feat{grid-template-columns:1fr}.feat .f{flex-direction:row;align-items:center}}
+
+/* NEWS */
+.news{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+@media (max-width:420px){.news{grid-template-columns:1fr}}
+.nc{display:flex;flex-direction:column;gap:10px}
+.nc .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem;color:var(--muted)}
+.nc p{margin:0}
+.nc .t{font-weight:700}
+.nc .why{font-size:.92rem;color:var(--muted)}
+.src{align-self:flex-start;margin-top:auto;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px;text-decoration:none}
+.src.u{background:var(--sage-soft);color:var(--sage-deep)}
+.src.s{background:var(--sand);color:var(--muted)}
+
+/* POLL panel */
+.pollwrap{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:center}
+.pollwrap .coal{display:flex;flex-direction:column;gap:10px}
+.cbox{background:rgba(255,255,255,.14);border-radius:var(--r-sm);padding:12px 14px}
+.cbox b{font-family:var(--display);font-size:2rem;display:block;line-height:1;font-variant-numeric:tabular-nums}
+.bars{display:flex;flex-direction:column;gap:9px}
+.br{display:grid;grid-template-columns:48px 1fr 54px;gap:10px;align-items:center;font-size:.9rem;font-weight:700}
+.bt{height:12px;border-radius:999px;background:rgba(255,255,255,.22);overflow:hidden}
+.bt i{display:block;height:100%;border-radius:999px}
+.br .n{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.pollwrap{grid-template-columns:1fr}}
+
+/* PARTITI: carosello */
+.car{position:relative;display:flex;align-items:center;gap:10px}
+.arrow{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--sage-deep)}
+.arrow svg{width:30px;height:30px}
+.arrow:hover{background:var(--sand)}
+.slide{flex:1;min-width:0;position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:340px;display:grid;grid-template-columns:1.25fr 1fr;
+  background:linear-gradient(115deg,color-mix(in srgb,var(--pc) 55%,#ffffff) 0%,color-mix(in srgb,var(--pc) 85%,#1b2430) 100%);color:var(--pt);touch-action:pan-y}
+.slide::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1px,transparent 1.4px);background-size:38px 38px;opacity:.35;pointer-events:none}
+.slide::after{content:"";position:absolute;left:-90px;bottom:-200px;width:520px;height:340px;border-radius:50%;background:rgba(255,255,255,.16);pointer-events:none}
+.s-txt{position:relative;z-index:1;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.s-badge{align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.85);color:#23302A}
+.s-txt h1{font-size:clamp(2rem,5vw,3.4rem);color:inherit}
+.s-txt p{margin:0;font-size:1.08rem;max-width:34ch;opacity:.95}
+.s-more{align-self:flex-start;background:none;border:0;padding:4px 0;font-weight:700;font-size:1.05rem;cursor:pointer;color:inherit;border-bottom:3px solid currentColor}
+.s-dots{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.s-dots button{width:26px;height:5px;border-radius:999px;border:0;padding:0;background:currentColor;opacity:.35;cursor:pointer}
+.s-dots button[aria-current="true"]{width:48px;opacity:1}
+.s-art{position:relative;z-index:1;display:grid;place-items:center;padding:24px}
+.emb{width:min(250px,80%);aspect-ratio:1;max-width:100%;border-radius:50%;background:var(--pc);border:10px solid rgba(255,255,255,.75);display:grid;place-items:center;box-shadow:0 20px 50px -20px rgba(0,0,0,.5);position:relative}
+.emb span{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);color:var(--pe)}
+.emb::after{content:"";position:absolute;inset:-26px;border-radius:50%;border:2px dashed rgba(255,255,255,.6)}
+.emb small{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);background:var(--bg);color:var(--ink);font-weight:700;font-size:.85rem;padding:6px 14px;border-radius:999px;white-space:nowrap;box-shadow:var(--shadow)}
+@media (max-width:760px){
+  .car .arrow{display:none}
+  .slide{grid-template-columns:1fr;min-height:0}
+  .s-art{order:-1;padding:28px 24px 8px}
+  .emb{width:150px}
+  .s-txt{padding-top:16px}
+  .s-dots{gap:6px}.s-dots button{width:14px}.s-dots button[aria-current="true"]{width:30px}
+}
+
+/* PARTITI: griglia sotto */
+.pgrid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:22px;align-items:start}
+.pgrid h3{font-size:1.35rem;display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{border-radius:var(--r-md);padding:16px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;color:var(--pt);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--pc) 70%,#ffffff),color-mix(in srgb,var(--pc) 92%,#10161d))}
+.tile small{opacity:.85;font-size:.8rem}
+.tile b{font-size:1.05rem;line-height:1.2}
+.tile .big{font-family:var(--display);font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.wide-btn{margin-top:12px;width:100%;justify-content:center;background:var(--surface);border:1px solid var(--line);font-size:1.02rem;padding:13px}
+.qs{display:flex;flex-direction:column;gap:9px}
+.q{display:flex;align-items:center;gap:10px;border:0;border-radius:var(--r-sm);padding:12px 14px;cursor:pointer;text-align:left;font-weight:700;font-size:.95rem;
+  background:color-mix(in srgb,var(--pc) 22%,var(--surface));color:var(--ink)}
+.q svg{width:18px;height:18px;flex:0 0 auto}
+.q[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.answer{margin:-2px 0 4px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px;font-size:.95rem}
+.answer b{display:block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.infos{display:flex;flex-direction:column;gap:12px}
+.info{display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;box-shadow:0 6px 18px -14px rgba(0,0,0,.4)}
+.info .ico{background:color-mix(in srgb,var(--pc) 20%,var(--surface));color:var(--ink)}
+.info b{font-family:var(--display);font-size:1.12rem;display:block;line-height:1.2}
+.info span{font-size:.88rem;color:var(--muted)}
+@media (max-width:980px){.pgrid{grid-template-columns:1fr 1fr}.pgrid>:last-child{grid-column:1/-1}}
+@media (max-width:640px){.pgrid{grid-template-columns:1fr}}
+.allp{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
+.allp button{flex:0 0 auto;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px 7px 7px;cursor:pointer;font-weight:700;font-size:.9rem}
+.allp button i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:-.02em}
+.allp button[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* TEMI */
+.tlist{display:flex;flex-direction:column;gap:10px}
+.trow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--pc);border-radius:var(--r-sm);padding:12px 16px}
+.trow .unk{color:var(--muted);font-style:italic}
+.tgroup{font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-top:8px}
+@media (max-width:560px){.trow{grid-template-columns:1fr;gap:4px}}
+
+/* CALENDARIO */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+@media (max-width:760px){.cols2{grid-template-columns:1fr}}
+.tl{display:flex;flex-direction:column}
+.ti{position:relative;padding:0 0 18px 26px;border-left:2px dashed var(--line);margin-left:8px}
+.ti:last-child{border-left-color:transparent}
+.ti::before{content:"";position:absolute;left:-9px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--sage)}
+.ti.fut::before{background:var(--terra);border-color:var(--terra)}
+.ti .d{font-size:.82rem;font-weight:700;color:var(--muted)}
+.ti p{margin:2px 0 0}
+
+/* VOTO */
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.vgrid{grid-template-columns:1fr}}
+.vgrid .card{display:flex;flex-direction:column;gap:10px}
+.vgrid h3{font-size:1.25rem}
+ul.pts{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.note{background:var(--terra-soft);border-radius:var(--r-md);padding:16px 18px;display:flex;gap:12px;align-items:center}
+.note p{margin:0}
+
+/* FOOTER */
+footer{background:var(--sand);padding-block:36px 0;margin-top:8px}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:18px}
+.rescat{display:flex;flex-direction:column;gap:8px;min-width:0}
+.rescat>b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.rescat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.rescat a{font-weight:700;text-decoration:none;border-bottom:1px solid var(--line)}
+.rescat a:hover{border-color:currentColor}
+.rescat span{display:block;font-size:.84rem;color:var(--muted)}
+.other{margin-top:26px;font-size:.92rem;color:var(--muted)}
+.other a{color:var(--ink);font-weight:700}
+.bottom{margin-top:30px;padding-block:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-size:.85rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.slide{animation:fade .35s ease}@keyframes fade{from{opacity:.4;transform:translateX(8px)}to{opacity:1;transform:none}}.bt i{transition:width .6s ease}}
 </style>
 </head>
 <body>
-
-<div class="flag" aria-hidden="true"></div>
-<div class="wrap">
-  <header class="top">
-    <div class="brand"><span class="mark" aria-hidden="true"></span><h1>Bussola <em>Politica</em></h1></div>
-    <p class="sub">La politica italiana in pezzi piccoli. Niente opinioni: fatti, partiti, temi.</p>
-    <span class="upd"><span class="dot"></span><span id="upd">Aggiornato</span></span>
+<div class="sheet">
+  <header class="in nav">
+    <a class="logo" href="#oggi" aria-label="Bussola Politica, pagina iniziale">
+      <span class="logo-mark" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FBF7EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="#C9553F" stroke="#C9553F"/></svg></span>
+      <span><b>Bussola Politica</b><small>la politica italiana in pezzi piccoli</small></span>
+    </a>
+    <nav class="tabs" role="tablist" aria-label="Sezioni">
+      <button class="tab" role="tab" data-v="oggi" id="t-oggi">Oggi</button>
+      <button class="tab" role="tab" data-v="partiti" id="t-partiti">Partiti</button>
+      <button class="tab" role="tab" data-v="temi" id="t-temi">Temi</button>
+      <button class="tab" role="tab" data-v="calendario" id="t-calendario">Calendario</button>
+    </nav>
+    <button class="cta" data-go="voto" id="t-voto">Come si vota</button>
   </header>
 
-  <nav class="tabs" role="tablist" aria-label="Sezioni">
-    <button class="tab" role="tab" data-v="oggi" id="t-oggi">Oggi</button>
-    <button class="tab" role="tab" data-v="partiti" id="t-partiti">Partiti</button>
-    <button class="tab" role="tab" data-v="temi" id="t-temi">Temi</button>
-    <button class="tab" role="tab" data-v="calendario" id="t-calendario">Calendario</button>
-    <button class="tab" role="tab" data-v="voto" id="t-voto">Come si vota</button>
-  </nav>
-
   <!-- OGGI -->
-  <section class="view" id="v-oggi">
-    <div class="quick">
-      <button class="qbtn" data-go="partiti"><b>Chi sono i partiti?</b><span>1 scheda per partito</span></button>
-      <button class="qbtn" data-go="temi"><b>Cosa pensano su…</b><span>Scegli un tema</span></button>
-      <button class="qbtn" data-go="voto"><b>Quando si vota?</b><span>Date e regole</span></button>
+  <main>
+  <section class="view in" id="v-oggi">
+    <div class="hero">
+      <div style="position:relative;z-index:1">
+        <span class="tag" style="color:inherit;opacity:.85">Aggiornato il <span data-upd></span></span>
+        <h1>Capire la politica, una scheda alla volta.</h1>
+        <p>Fatti dai siti ufficiali, partiti e temi in frasi corte. Nessuna opinione: scegli tu.</p>
+        <button class="cta" data-go="partiti">Scopri i partiti</button>
+      </div>
+      <div class="hero-side">
+        <span class="tag">Le 3 cose da sapere</span>
+        <div class="row"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><div><b>Si vota nel 2027</b><span>Politiche in autunno, con una legge elettorale nuova.</span></div></div>
+        <div class="row"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 20h12M5 8h14"/><path d="M5 8l-2.5 6a2.5 2.5 0 005 0zM19 8l-2.5 6a2.5 2.5 0 005 0z"/></svg></span><div><b>Due blocchi quasi pari</b><span>Solo 0,1 punti di distanza nei sondaggi.</span></div></div>
+        <div class="row"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span><div><b>Si discute la Manovra</b><span>I soldi dello Stato per il 2027. Entro il 31 dicembre.</span></div></div>
+      </div>
     </div>
 
-    <h2>Le 3 cose da sapere</h2>
-    <div class="card"><p class="title">1. Si vota nel 2027</p><p class="why">Politiche previste in <b>autunno 2027</b>, con una legge elettorale nuova.</p></div>
-    <div class="card"><p class="title">2. Due blocchi quasi pari</p><p class="why">Centrodestra e "campo largo" sono a <b>0,1 punti</b> di distanza nei sondaggi.</p></div>
-    <div class="card"><p class="title">3. Ora si discute la Manovra</p><p class="why">La legge sui soldi dello Stato per il 2027. Va approvata <b>entro il 31 dicembre</b>.</p></div>
-
-    <h2>Ultime notizie</h2>
-    <p class="hint"><span class="srcb u">Ufficiale</span> = dal sito di un'istituzione. <span class="srcb s">Stampa</span> = da un giornale o istituto di sondaggi.</p>
-    <p class="hint">Filtra per tema:</p>
-    <div class="chips" id="newsFilter"></div>
-    <div id="news" style="display:flex;flex-direction:column;gap:12px"></div>
-
-    <h2>Sondaggi</h2>
-    <p class="hint">Media di più sondaggi (Youtrend/Agi, 29 ottobre 2026). Sono stime, non risultati.</p>
-    <div class="coal">
-      <div class="card"><span class="side" style="color:var(--dx)">Centrodestra</span><span class="big">43,7%</span></div>
-      <div class="card"><span class="side" style="color:var(--sx)">Campo largo</span><span class="big">43,8%</span></div>
+    <div class="feat">
+      <div class="f"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>Fonti ufficiali</b><br><span>Camera, Senato, Governo e ministeri.</span></div></div>
+      <div class="f"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h7"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></svg></span><div><b>Frasi corte</b><br><span>Ogni notizia in due righe.</span></div></div>
+      <div class="f"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 10-2.3 5.7"/><path d="M20 5v6h-6"/></svg></span><div><b>Ogni lunedì</b><br><span>Aggiornato ogni settimana.</span></div></div>
     </div>
-    <div class="card"><div class="poll" id="poll"></div></div>
+
+    <div class="sec-head"><h2>Ultime notizie</h2></div>
+    <div class="pills" id="newsFilter"></div>
+    <div class="news" id="news"></div>
+
+    <div class="panel">
+      <div class="pollwrap">
+        <div class="coal">
+          <h2 style="color:inherit">Sondaggi</h2>
+          <p style="margin:0;opacity:.9;font-size:.92rem">Media di più sondaggi (Youtrend/Agi, <span data-polldate>29 ottobre 2026</span>). Stime, non risultati.</p>
+          <div class="cbox"><small>Centrodestra</small><b id="cdx">43,7%</b></div>
+          <div class="cbox"><small>Campo largo</small><b id="csx">43,8%</b></div>
+        </div>
+        <div class="bars" id="poll"></div>
+      </div>
+    </div>
   </section>
 
   <!-- PARTITI -->
-  <section class="view" id="v-partiti" hidden>
-    <h2>I partiti in Parlamento</h2>
-    <p class="hint">Tocca una scheda per aprirla. Il colore è quello del partito.</p>
-    <div class="chips" id="sideFilter"></div>
-    <div id="parties" style="display:flex;flex-direction:column;gap:10px"></div>
+  <section class="view in" id="v-partiti" hidden>
+    <div class="car">
+      <button class="arrow" id="prev" aria-label="Partito precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <article class="slide" id="slide" aria-live="polite"></article>
+      <button class="arrow" id="next" aria-label="Partito successivo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="allp" id="allp" aria-label="Tutti i partiti"></div>
+    <div class="pgrid" id="pgrid"></div>
   </section>
 
   <!-- TEMI -->
-  <section class="view" id="v-temi" hidden>
-    <h2>Cosa pensano su…</h2>
-    <p class="hint">Scegli un tema. Una riga per partito.</p>
-    <div class="chips" id="themeFilter"></div>
-    <div class="card" id="themeIntro"></div>
-    <div class="card" id="themeRows"></div>
+  <section class="view in" id="v-temi" hidden>
+    <div>
+      <h2>Cosa pensano su…</h2>
+      <p class="lead">Scegli un tema. Una riga per partito.</p>
+    </div>
+    <div class="pills" id="themeFilter"></div>
+    <div class="panel" id="themeIntro"></div>
+    <div class="tlist" id="themeRows"></div>
   </section>
 
   <!-- CALENDARIO -->
-  <section class="view" id="v-calendario" hidden>
-    <h2>Prossime date</h2>
-    <div class="tl" id="tlFut"></div>
-    <h2>Cosa è successo</h2>
-    <p class="hint">Dalle elezioni del 2022 a oggi.</p>
-    <div class="tl" id="tlPast"></div>
+  <section class="view in" id="v-calendario" hidden>
+    <div><h2>Calendario</h2><p class="lead">Cosa arriva e cosa è già successo.</p></div>
+    <div class="cols2">
+      <div class="card"><h3 style="margin-bottom:16px">Prossime date</h3><div class="tl" id="tlFut"></div></div>
+      <div class="card"><h3 style="margin-bottom:16px">Dal 2022 a oggi</h3><div class="tl" id="tlPast"></div></div>
+    </div>
   </section>
 
   <!-- VOTO -->
-  <section class="view" id="v-voto" hidden>
-    <h2>Come si vota nel 2027</h2>
-    <div class="card"><p class="title">Nuova legge elettorale</p>
-      <ul class="pts">
-        <li>Si chiama <b>Stabilicum</b> (le opposizioni la chiamano "Melonellum").</li>
-        <li>Sistema <b>proporzionale</b>: seggi in base ai voti.</li>
-        <li><b>Premio</b>: una coalizione con almeno il <b>42%</b> ottiene circa il 52-55% dei seggi alla Camera.</li>
-        <li>Si potranno dare <b>preferenze</b> con una crocetta.</li>
-      </ul>
+  <section class="view in" id="v-voto" hidden>
+    <div><h2>Come si vota nel 2027</h2><p class="lead">Le regole in breve.</p></div>
+    <div class="vgrid">
+      <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V5h8v6M10 8l1.5 1.5L14 7"/></svg></span><h3>Nuova legge elettorale</h3>
+        <ul class="pts">
+          <li>Si chiama <b>Stabilicum</b>.</li>
+          <li>Sistema <b>proporzionale</b>: seggi in base ai voti.</li>
+          <li><b>Premio</b>: chi supera il <b>42%</b> ottiene circa il 52-55% dei seggi alla Camera.</li>
+          <li>Si potranno dare <b>preferenze</b>.</li>
+        </ul>
+      </div>
+      <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span><h3>Due elezioni nel 2027</h3>
+        <ul class="pts">
+          <li><b>Comunali</b> in primavera: Roma, Milano, Napoli, Torino, Bologna, Trieste.</li>
+          <li><b>Politiche</b> previste in autunno.</li>
+        </ul>
+      </div>
+      <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l18-8-6 16-3-7z"/><path d="M12 14l9-9"/></svg></span><h3>Sei all'estero per studio?</h3>
+        <ul class="pts">
+          <li>Puoi chiedere di votare <b>per posta</b>.</li>
+          <li>La richiesta va al <b>Comune</b>, entro una scadenza che esce con la data del voto.</li>
+          <li>Info sul sito del Ministero degli Esteri.</li>
+        </ul>
+      </div>
     </div>
-    <div class="card"><p class="title">Le due elezioni del 2027</p>
-      <ul class="pts">
-        <li><b>Comunali</b>: primavera (15 aprile - 15 giugno) a Roma, Milano, Napoli, Torino, Bologna, Trieste.</li>
-        <li><b>Politiche</b>: previste in autunno.</li>
-      </ul>
-    </div>
-    <div class="card"><p class="title">Sei all'estero per studio?</p>
-      <ul class="pts">
-        <li>Chi è all'estero per qualche mese può chiedere di votare <b>per posta</b>.</li>
-        <li>La richiesta va fatta al <b>Comune</b>, entro una scadenza che esce quando si fissa la data.</li>
-        <li>Controlla sul sito del Ministero dell'Interno o del tuo Comune.</li>
-      </ul>
-    </div>
-    <div class="note"><p>Questo sito non dice chi votare. Mostra cosa dicono e fanno i partiti, così puoi scegliere tu.</p></div>
+    <div class="note"><span class="ico" aria-hidden="true" style="background:var(--surface);color:var(--terra-deep)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><p>Questo sito non dice chi votare. Mostra cosa dicono e fanno i partiti, così scegli tu.</p></div>
   </section>
+  </main>
 
-
-  <footer id="sources"></footer>
+  <footer>
+    <div class="in">
+      <h2>Risorse ufficiali</h2>
+      <p class="lead">I siti delle istituzioni da cui prendo le informazioni.</p>
+      <div class="res" id="res"></div>
+      <p class="other" id="other"></p>
+      <div class="bottom"><span>© Bussola Politica · <span data-upd></span></span><span>Posizioni riassunte in modo neutrale</span><span>Aggiornamento ogni lunedì</span></div>
+    </div>
+  </footer>
 </div>
 
 <script id="dati" type="application/json">
@@ -837,84 +958,109 @@ nav.tabs{top:calc(6px + env(safe-area-inset-top,0px))}
 </script>
 <script>
 (function(){
-  var D = JSON.parse(document.getElementById('dati').textContent);
-  var P = {}; D.partiti.forEach(function(p){P[p.id]=p});
-  var esc = function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-  var chip = function(id){var p=P[id]; return p?'<span class="pchip"><i style="background:'+p.col+'"></i>'+esc(p.sigla)+'</span>':''};
-  var latoNome = {dx:'Centrodestra',sx:'Campo largo',altro:'Altri'};
-  var latoCol = {dx:'var(--dx)',sx:'var(--sx)',altro:'var(--altro)'};
-  document.getElementById('upd').textContent = 'Aggiornato il ' + D.aggiornato;
+  var D=JSON.parse(document.getElementById('dati').textContent);
+  var P={}; D.partiti.forEach(function(p){P[p.id]=p});
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var fmt=function(n){return n.toFixed(1).replace('.',',')+'%'};
+  var lum=function(h){h=h.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return (0.299*r+0.587*g+0.114*b)/255};
+  var onCol=function(h){return lum(h)>0.6?'#1d2420':'#ffffff'};
+  var latoNome={dx:'Centrodestra',sx:'Campo largo',altro:'Altri'};
+  var chip=function(id){var p=P[id];return p?'<span class="pchip"><i class="dotp" style="background:'+p.col+'"></i>'+esc(p.sigla)+'</span>':''};
+  var ICO={search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg>',
+    user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+    flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg>',
+    chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/></svg>',
+    pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.5-6-11a6 6 0 0112 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>'};
+  document.querySelectorAll('[data-upd]').forEach(function(e){e.textContent=D.aggiornato});
 
-  // Views
+  // VIEWS
   var views=['oggi','partiti','temi','calendario','voto'];
-  function show(v){ if(views.indexOf(v)<0) v='oggi';
-    views.forEach(function(x){document.getElementById('v-'+x).hidden = x!==v; document.getElementById('t-'+x).setAttribute('aria-selected', x===v)});
-  }
-  document.querySelectorAll('.tab,.qbtn').forEach(function(b){b.addEventListener('click',function(){var v=b.dataset.v||b.dataset.go; location.hash=v; show(v); window.scrollTo(0,0)})});
+  function show(v){if(views.indexOf(v)<0)v='oggi';
+    views.forEach(function(x){document.getElementById('v-'+x).hidden=x!==v;var t=document.getElementById('t-'+x);if(t.classList.contains('tab'))t.setAttribute('aria-selected',x===v)});}
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-v],[data-go]');if(!b)return;var v=b.dataset.v||b.dataset.go;if(location.hash!=='#'+v)location.hash=v;else show(v);window.scrollTo({top:0})});
   window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
   show(location.hash.slice(1));
 
-  // News
-  var temiNews=['Tutte'].concat(D.notizie.map(function(n){return n.tema}).filter(function(t,i,a){return a.indexOf(t)===i}));
-  var nf=document.getElementById('newsFilter'), cur='Tutte';
+  // POLL
+  var sorted=D.partiti.filter(function(p){return p.sond!=null}).sort(function(a,b){return b.sond-a.sond});
+  document.getElementById('poll').innerHTML=sorted.map(function(p){return '<div class="br"><span>'+esc(p.sigla)+'</span><div class="bt"><i style="width:'+(p.sond/30*100)+'%;background:'+p.col+'"></i></div><span class="n">'+fmt(p.sond)+'</span></div>'}).join('');
+
+  // NEWS
+  var nf=document.getElementById('newsFilter'),cur='Tutte';
+  var temiN=['Tutte'].concat(D.notizie.map(function(n){return n.tema}).filter(function(t,i,a){return a.indexOf(t)===i}));
   function drawNews(){
-    nf.innerHTML=temiNews.map(function(t){return '<button class="chip" aria-pressed="'+(t===cur)+'" data-t="'+esc(t)+'">'+esc(t)+'</button>'}).join('');
+    nf.innerHTML=temiN.map(function(t){return '<button class="pill" aria-pressed="'+(t===cur)+'" data-t="'+esc(t)+'">'+esc(t)+'</button>'}).join('');
     document.getElementById('news').innerHTML=D.notizie.filter(function(n){return cur==='Tutte'||n.tema===cur}).map(function(n){
-      return '<article class="card"><div class="meta"><span>'+esc(n.data)+'</span><span class="tag">'+esc(n.tema)+'</span>'+n.partiti.map(chip).join('')+'</div><p class="title">'+esc(n.cosa)+'</p><p class="why"><b>Perché conta:</b> '+esc(n.perche)+'</p></article>'}).join('');
+      return '<article class="card nc"><div class="meta"><span>'+esc(n.data)+'</span><span class="tag">'+esc(n.tema)+'</span>'+n.partiti.map(chip).join('')+'</div><p class="t">'+esc(n.cosa)+'</p><p class="why"><b>Perché conta:</b> '+esc(n.perche)+'</p>'+
+      (n.link?'<a class="src '+n.fonte+'" href="'+n.link+'" target="_blank" rel="noopener">'+(n.fonte==='u'?'Ufficiale':'Stampa')+' · '+esc(n.sito)+' ↗</a>':'')+'</article>'}).join('');
   }
-  nf.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b){cur=b.dataset.t; drawNews()}});
+  nf.addEventListener('click',function(e){var b=e.target.closest('.pill');if(b){cur=b.dataset.t;drawNews()}});
   drawNews();
 
-  // Poll
-  var sorted=D.partiti.filter(function(p){return p.sond!=null}).sort(function(a,b){return b.sond-a.sond});
-  var max=30;
-  document.getElementById('poll').innerHTML=sorted.map(function(p){
-    return '<div class="prow"><span>'+esc(p.sigla)+'</span><div class="bar"><div style="width:'+(p.sond/max*100)+'%;background:'+p.col+'"></div></div><span class="num">'+p.sond.toFixed(1).replace('.',',')+'%</span></div>'}).join('');
-
-  // Parties
-  var sf=document.getElementById('sideFilter'), side='tutti';
-  function drawParties(){
-    var opts=[['tutti','Tutti'],['dx','Centrodestra'],['sx','Campo largo'],['altro','Altri']];
-    sf.innerHTML=opts.map(function(o){return '<button class="chip" aria-pressed="'+(o[0]===side)+'" data-s="'+o[0]+'">'+o[1]+'</button>'}).join('');
-    document.getElementById('parties').innerHTML=D.partiti.filter(function(p){return side==='tutti'||p.lato===side}).map(function(p){
-      var temiP=D.temi.filter(function(t){return t.pos[p.id]}).map(function(t){return '<li><b>'+esc(t.nome)+':</b> '+esc(t.pos[p.id])+'</li>'}).join('');
-      return '<details class="party" style="--pc:'+p.col+'"><summary><p class="pname">'+esc(p.nome)+'</p><span class="pleader">'+esc(p.leader)+'</span><span class="ppoll"><b>'+(p.sond!=null?p.sond.toFixed(1).replace('.',',')+'%':'n.d.')+'</b><span>sondaggi</span></span></summary>'+
-        '<div class="pbody"><span class="side" style="color:'+latoCol[p.lato]+'">'+latoNome[p.lato]+'</span><ul class="pts">'+p.punti.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+
-        (temiP?'<span class="side" style="color:var(--muted)">Sui temi</span><ul class="pts">'+temiP+'</ul>':'')+'</div></details>'}).join('');
+  // PARTITI
+  var idx=0, th=null;
+  var desc={fdi:'Il primo partito. Guida il governo dal 2022.',lega:'Al governo. Punta sull’autonomia delle Regioni.',fi:'Al governo, area moderata e popolare.',nm:'Piccolo partito centrista nel centrodestra.',
+    pd:'Il primo partito di opposizione, di centrosinistra.',m5s:'All’opposizione, nel campo largo.',avs:'Ambiente e sinistra, nel campo largo.',az:'Opposizione centrista, fuori dal campo largo.',
+    iv:'Opposizione centrista. Vuole entrare nel campo largo.',pe:'Europeisti e liberali, vicini al campo largo.',fn:'Estrema destra. Nato nel 2026 da una scissione della Lega.'};
+  var allp=document.getElementById('allp');
+  allp.innerHTML=D.partiti.map(function(p,i){return '<button data-i="'+i+'"><i style="background:'+p.col+';color:'+onCol(p.col)+'">'+esc(p.sigla)+'</i>'+esc(p.nome)+'</button>'}).join('');
+  allp.addEventListener('click',function(e){var b=e.target.closest('button');if(b){go(+b.dataset.i)}});
+  function go(i){idx=(i+D.partiti.length)%D.partiti.length;th=null;drawParty()}
+  document.getElementById('prev').onclick=function(){go(idx-1)};
+  document.getElementById('next').onclick=function(){go(idx+1)};
+  document.addEventListener('keydown',function(e){if(document.getElementById('v-partiti').hidden)return;if(e.key==='ArrowLeft')go(idx-1);if(e.key==='ArrowRight')go(idx+1)});
+  var sx0=null, sl=document.getElementById('slide');
+  sl.addEventListener('touchstart',function(e){sx0=e.touches[0].clientX},{passive:true});
+  sl.addEventListener('touchend',function(e){if(sx0==null)return;var dx=e.changedTouches[0].clientX-sx0;if(Math.abs(dx)>50)go(idx+(dx<0?1:-1));sx0=null});
+  function drawParty(){
+    var p=D.partiti[idx], pt=lum(p.col)>0.55?'#1d2420':'#ffffff';
+    var root=document.getElementById('v-partiti');
+    root.style.setProperty('--pc',p.col); root.style.setProperty('--pt',pt); root.style.setProperty('--pe',onCol(p.col));
+    var lead=p.leader.split(' (');
+    sl.innerHTML='<div class="s-txt"><span class="s-badge">'+latoNome[p.lato]+'</span><h1>'+esc(p.nome)+'</h1><p>'+esc(desc[p.id]||p.punti[0])+'</p>'+
+      '<button class="s-more" id="more">Leggi la scheda</button><div class="s-dots">'+D.partiti.map(function(q,i){return '<button aria-label="'+esc(q.nome)+'" aria-current="'+(i===idx)+'" data-i="'+i+'"></button>'}).join('')+'</div></div>'+
+      '<div class="s-art"><div class="emb"><span>'+esc(p.sigla)+'</span><small>'+(idx+1)+' di '+D.partiti.length+'</small></div></div>';
+    sl.querySelectorAll('.s-dots button').forEach(function(b){b.onclick=function(){go(+b.dataset.i)}});
+    document.getElementById('more').onclick=function(){document.getElementById('pgrid').scrollIntoView({behavior:'smooth',block:'start'})};
+    allp.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-current',+b.dataset.i===idx)});
+    var cur=allp.querySelector('[aria-current="true"]'); if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'nearest',inline:'center'});
+    var temi=D.temi.filter(function(t){return t.pos[p.id]});
+    if(th===null&&temi.length)th=temi[0].id;
+    var html='<div><h3>Chi è</h3><div class="tiles">'+
+        '<div class="tile"><small>Leader</small><b>'+esc(lead[0])+'</b>'+(lead[1]?'<small>'+esc(lead[1].replace(')',''))+'</small>':'')+'</div>'+
+        '<div class="tile"><small>Sondaggi</small><span class="big">'+(p.sond!=null?fmt(p.sond):'n.d.')+'</span><small>'+(p.sond!=null?'media Youtrend/Agi':'non misurato a parte')+'</small></div>'+
+      '</div><button class="pill wide-btn" data-go="temi">Confronta tutti sui temi</button></div>';
+    html+='<div><h3>Cosa pensa su…</h3>'+(temi.length?'<div class="qs">'+temi.map(function(t){return '<button class="q" aria-pressed="'+(t.id===th)+'" aria-expanded="'+(t.id===th)+'" data-th="'+t.id+'">'+ICO.search+esc(t.nome)+'</button>'+(t.id===th?'<div class="answer"><b>'+esc(p.sigla)+' su '+esc(t.nome.toLowerCase())+'</b>'+esc(t.pos[p.id])+'</div>':'')}).join('')+'</div>':'<p class="lead">Nessuna posizione chiara raccolta finora.</p>')+'</div>';
+    var icoList=[ICO.flag,ICO.pin,ICO.chart,ICO.user];
+    html+='<div><h3>Punti chiave</h3><div class="infos">'+p.punti.map(function(x,i){return '<div class="info"><span class="ico" aria-hidden="true">'+icoList[i%icoList.length]+'</span><div><b>'+esc(['Ruolo','Linea','Da sapere','Novità'][i%4])+'</b><span>'+esc(x)+'</span></div></div>'}).join('')+'</div></div>';
+    var g=document.getElementById('pgrid'); g.innerHTML=html;
+    g.querySelectorAll('.q').forEach(function(b){b.onclick=function(){th=b.dataset.th;drawParty()}});
   }
-  sf.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b){side=b.dataset.s; drawParties()}});
-  drawParties();
+  drawParty();
 
-  // Themes
-  var tf=document.getElementById('themeFilter'), th=D.temi[0].id;
+  // TEMI
+  var tf=document.getElementById('themeFilter'),tt=D.temi[0].id;
   function drawTheme(){
-    tf.innerHTML=D.temi.map(function(t){return '<button class="chip" aria-pressed="'+(t.id===th)+'" data-th="'+t.id+'">'+esc(t.nome)+'</button>'}).join('');
-    var t=D.temi.filter(function(x){return x.id===th})[0];
-    document.getElementById('themeIntro').innerHTML='<p class="title">'+esc(t.nome)+'</p><p class="why">'+esc(t.intro)+'</p>';
-    var order=['dx','sx','altro'];
-    document.getElementById('themeRows').innerHTML=order.map(function(l){
-      return D.partiti.filter(function(p){return p.lato===l}).map(function(p){
-        var v=t.pos[p.id];
-        return '<div class="trow">'+chip(p.id)+'<span'+(v?'':' class="unk"')+'>'+esc(v||'Posizione non chiara: da approfondire')+'</span></div>'}).join('')}).join('');
+    tf.innerHTML=D.temi.map(function(t){return '<button class="pill" aria-pressed="'+(t.id===tt)+'" data-th="'+t.id+'">'+esc(t.nome)+'</button>'}).join('');
+    var t=D.temi.filter(function(x){return x.id===tt})[0];
+    document.getElementById('themeIntro').innerHTML='<h2 style="color:inherit">'+esc(t.nome)+'</h2><p style="margin:6px 0 0;opacity:.92">'+esc(t.intro)+'</p>';
+    document.getElementById('themeRows').innerHTML=['dx','sx','altro'].map(function(l){
+      return '<div class="tgroup">'+latoNome[l]+'</div>'+D.partiti.filter(function(p){return p.lato===l}).map(function(p){var v=t.pos[p.id];
+        return '<div class="trow" style="--pc:'+p.col+'"><b>'+esc(p.nome)+'</b><span'+(v?'':' class="unk"')+'>'+esc(v||'Posizione non chiara: da approfondire')+'</span></div>'}).join('')}).join('');
   }
-  tf.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b){th=b.dataset.th; drawTheme()}});
+  tf.addEventListener('click',function(e){var b=e.target.closest('.pill');if(b){tt=b.dataset.th;drawTheme()}});
   drawTheme();
 
-  // Timeline
-  var tl=function(a,fut){return a.map(function(x){return '<div class="ti'+(fut?' fut':'')+'"><span class="d">'+esc(x.d)+'</span><p>'+esc(x.t)+'</p></div>'}).join('')};
+  // CALENDARIO
+  var tl=function(a,f){return a.map(function(x){return '<div class="ti'+(f?' fut':'')+'"><span class="d">'+esc(x.d)+'</span><p>'+esc(x.t)+'</p></div>'}).join('')};
   document.getElementById('tlFut').innerHTML=tl(D.futuro,true);
   document.getElementById('tlPast').innerHTML=tl(D.passato.slice().reverse(),false);
 
-  // Siti
-  var catCol={'Istituzioni':'#1F4E9C','Leggi':'#6B4FBB','Voto':'#2E9D5B','Soldi pubblici':'#C27A12','Controlli':'#B5312B','Europa':'#2E6FD8','Dati':'#5A6676'};
-  var cats=['Tutti'].concat(D.siti.map(function(s){return s.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
-
-  var byCat={}; D.siti.forEach(function(x){(byCat[x.cat]=byCat[x.cat]||[]).push(x)});
-  document.getElementById('sources').innerHTML='<h2>Risorse ufficiali</h2><p class="hint">I siti delle istituzioni da cui prendo le informazioni. Tocca per aprire.</p><div class="res">'+
-    cats.slice(1).map(function(c){return '<div class="rescat"><span class="side" style="color:'+catCol[c]+'">'+esc(c)+'</span><ul>'+byCat[c].map(function(x){return '<li><a href="'+x.url+'" target="_blank" rel="noopener">'+esc(x.nome)+'</a><span>'+esc(x.cosa)+'</span></li>'}).join('')+'</ul></div>'}).join('')+
-    '</div><h2>Altre fonti</h2><p class="hint">Sondaggi e posizioni dei partiti non sono su siti istituzionali. Li prendo da qui:</p><p>'+D.fonti.map(function(f){return '<a href="'+f[1]+'" target="_blank" rel="noopener">'+esc(f[0])+'</a>'}).join(' · ')+'</p><p>Posizioni riassunte in modo neutrale. Aggiornamento ogni lunedì.</p>';
+  // FOOTER
+  var by={},order=[]; D.siti.forEach(function(x){if(!by[x.cat]){by[x.cat]=[];order.push(x.cat)}by[x.cat].push(x)});
+  document.getElementById('res').innerHTML=order.map(function(c){return '<div class="rescat"><b>'+esc(c)+'</b><ul>'+by[c].map(function(x){return '<li><a href="'+x.url+'" target="_blank" rel="noopener">'+esc(x.nome)+'</a><span>'+esc(x.cosa)+'</span></li>'}).join('')+'</ul></div>'}).join('');
+  document.getElementById('other').innerHTML='Sondaggi e posizioni dei partiti non sono su siti istituzionali. Fonti di stampa: '+D.fonti.map(function(f){return '<a href="'+f[1]+'" target="_blank" rel="noopener">'+esc(f[0])+'</a>'}).join(' · ');
 })();
 </script>
-
 </body>
 </html>
