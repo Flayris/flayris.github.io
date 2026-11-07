@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="La politica italiana in schede brevi: notizie da fonti ufficiali, partiti, temi, sondaggi e date del voto 2027.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Bussola Politica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: una colonna stretta, schede brevi, menu a pillole fisso in alto. Colore = partito, mai decorazione. */
+:root{
+  --bg:#F6F7F5; --surface:#FFFFFF; --ink:#1B2420; --muted:#59645E; --line:#DDE3DF;
+  --accent:#00703C; --ok:#00703C; --accent-soft:#E3F2EA; --verde:#009246; --bianco:#FFFFFF; --rosso:#CE2B37; --dx:#1F4E9C; --sx:#C8261E; --altro:#6B7280;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1412; --surface:#18201C; --ink:#EAF0EC; --muted:#9BA8A0; --line:#2A3630;
+  --accent:#5FD08F; --ok:#5FD08F; --accent-soft:#16301F; --verde:#1FA35A; --bianco:#E8ECEA; --rosso:#E0505B; --dx:#7FA6EE; --sx:#F07A72; --altro:#9AA3B0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1412; --surface:#18201C; --ink:#EAF0EC; --muted:#9BA8A0; --line:#2A3630;
+  --accent:#5FD08F; --ok:#5FD08F; --accent-soft:#16301F; --verde:#1FA35A; --bianco:#E8ECEA; --rosso:#E0505B; --dx:#7FA6EE; --sx:#F07A72; --altro:#9AA3B0; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto}
+header.top{padding-block:24px 8px}
+h1{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1.1;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0}
+.upd{display:inline-flex;gap:6px;align-items:center;font-size:.85rem;color:var(--muted);margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.dot{width:8px;height:8px;border-radius:50%;background:#2E9D5B}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-4px;padding-inline:4px}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 .95rem var(--body);padding:9px 16px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab:focus-visible,.chip:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+section.view{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+h2{font-family:var(--display);font-weight:800;font-size:1.4rem;margin:12px 0 0}
+.hint{color:var(--muted);font-size:.95rem;margin:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8rem;color:var(--muted)}
+.tag{font-weight:700;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+.pchip{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:.8rem;padding:2px 9px 2px 6px;border-radius:999px;border:1px solid var(--line)}
+.pchip i{width:10px;height:10px;border-radius:50%;display:inline-block;flex:0 0 auto}
+.title{font-weight:700;font-size:1.05rem;margin:0}
+.why{margin:0;font-size:.95rem;color:var(--muted)}
+.why b{color:var(--ink)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:520px){.quick{grid-template-columns:1fr}}
+.qbtn{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:2px}
+.qbtn b{font-family:var(--display);font-size:1.05rem}
+.qbtn span{color:var(--muted);font-size:.85rem}
+/* poll bars */
+.poll{display:flex;flex-direction:column;gap:8px}
+.prow{display:grid;grid-template-columns:96px 1fr 48px;gap:8px;align-items:center;font-size:.9rem}
+.bar{height:14px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar>div{height:100%}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.coal{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.coal .card{align-items:flex-start}
+.big{font-family:var(--display);font-weight:800;font-size:2rem;font-variant-numeric:tabular-nums;line-height:1}
+/* filters */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 .9rem var(--body);padding:7px 13px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+/* party cards */
+details.party{background:var(--surface);border:1px solid var(--line);border-left:8px solid var(--pc);border-radius:14px;overflow:hidden}
+details.party summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+details.party summary::-webkit-details-marker{display:none}
+.pname{font-family:var(--display);font-weight:800;font-size:1.15rem;margin:0}
+.pleader{color:var(--muted);font-size:.9rem;grid-column:1}
+.ppoll{grid-row:1/3;grid-column:2;text-align:right}
+.ppoll b{font-family:var(--display);font-size:1.4rem;font-variant-numeric:tabular-nums;display:block;line-height:1}
+.ppoll span{font-size:.75rem;color:var(--muted)}
+.pbody{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px}
+.side{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+ul.pts{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.more{font-size:.85rem;color:var(--accent);font-weight:700}
+/* themes */
+.trow{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
+.trow:first-child{border-top:0}
+.trow .pchip{justify-self:start}
+.unk{color:var(--muted);font-style:italic}
+/* timeline */
+.tl{display:flex;flex-direction:column;gap:0;border-left:3px solid var(--line);margin-left:6px}
+.ti{position:relative;padding:0 0 16px 18px}
+.ti::before{content:"";position:absolute;left:-8px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--muted)}
+.ti.fut::before{border-color:var(--accent);background:var(--accent)}
+.ti .d{font-size:.8rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.ti p{margin:2px 0 0}
+.note{background:var(--accent-soft);border-radius:14px;padding:14px 16px;font-size:.95rem}
+.note p{margin:0}
+a.site{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--sc);border-radius:14px;padding:12px 16px}
+a.site:hover{border-color:var(--sc)}
+a.site:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+a.site b{font-size:1.02rem}
+a.site span{color:var(--muted);font-size:.9rem;grid-column:1}
+a.site em{grid-row:1/3;grid-column:2;font-style:normal;font-size:.8rem;color:var(--muted);text-align:right;overflow-wrap:anywhere;max-width:120px}
+.src{font-size:.8rem;color:var(--muted)}
+.src a{color:var(--accent)}
+footer{margin-top:36px;padding-top:8px;border-top:2px solid var(--line);font-size:.9rem;color:var(--muted);display:flex;flex-direction:column;gap:10px}
+footer a{color:var(--accent);font-weight:700}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.rescat{display:flex;flex-direction:column;gap:6px;min-width:0}
+.rescat ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.rescat li{display:flex;flex-direction:column}
+.rescat li span{font-size:.82rem}
+.srcb{align-self:flex-start;display:inline-block;font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:6px;text-decoration:none;border:1px solid}
+.srcb.u{color:var(--ok);border-color:var(--ok);background:color-mix(in srgb,#2E9D5B 12%,transparent)}
+.srcb.s{color:var(--muted);border-color:var(--line)}
+@media (max-width:440px){.trow{grid-template-columns:1fr;gap:6px}.prow{grid-template-columns:84px 1fr 44px}h1{font-size:1.7rem}}
+@media (prefers-reduced-motion:no-preference){.bar>div{transition:width .5s ease}}
+
+.flag{position:fixed;inset:0 0 auto;height:calc(6px + env(safe-area-inset-top,0px));z-index:20;background:linear-gradient(90deg,var(--verde) 0 33.33%,var(--bianco) 33.33% 66.66%,var(--rosso) 66.66%);box-shadow:0 1px 0 var(--line)}
+header.top{padding-block:34px 8px}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:conic-gradient(var(--verde) 0 120deg,var(--bianco) 120deg 240deg,var(--rosso) 240deg);border:2px solid var(--line);display:grid;place-items:center}
+.mark::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--ink)}
+h1 em{font-style:normal;color:var(--rosso)}
+.tab[aria-selected="true"]{background:var(--verde);border-color:var(--verde);color:#fff}
+.chip[aria-pressed="true"]{background:var(--verde);border-color:var(--verde);color:#fff}
+.tag{background:color-mix(in srgb,var(--rosso) 12%,transparent);color:var(--rosso)}
+.dot{background:var(--verde)}
+footer{border-top:4px solid transparent;border-image:linear-gradient(90deg,var(--verde) 0 33.33%,var(--line) 33.33% 66.66%,var(--rosso) 66.66%) 1}
+nav.tabs{top:calc(6px + env(safe-area-inset-top,0px))}
+</style>
+</head>
+<body>
+
+<div class="flag" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="mark" aria-hidden="true"></span><h1>Bussola <em>Politica</em></h1></div>
+    <p class="sub">La politica italiana in pezzi piccoli. Niente opinioni: fatti, partiti, temi.</p>
+    <span class="upd"><span class="dot"></span><span id="upd">Aggiornato</span></span>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sezioni">
+    <button class="tab" role="tab" data-v="oggi" id="t-oggi">Oggi</button>
+    <button class="tab" role="tab" data-v="partiti" id="t-partiti">Partiti</button>
+    <button class="tab" role="tab" data-v="temi" id="t-temi">Temi</button>
+    <button class="tab" role="tab" data-v="calendario" id="t-calendario">Calendario</button>
+    <button class="tab" role="tab" data-v="voto" id="t-voto">Come si vota</button>
+  </nav>
+
+  <!-- OGGI -->
+  <section class="view" id="v-oggi">
+    <div class="quick">
+      <button class="qbtn" data-go="partiti"><b>Chi sono i partiti?</b><span>1 scheda per partito</span></button>
+      <button class="qbtn" data-go="temi"><b>Cosa pensano su…</b><span>Scegli un tema</span></button>
+      <button class="qbtn" data-go="voto"><b>Quando si vota?</b><span>Date e regole</span></button>
+    </div>
+
+    <h2>Le 3 cose da sapere</h2>
+    <div class="card"><p class="title">1. Si vota nel 2027</p><p class="why">Politiche previste in <b>autunno 2027</b>, con una legge elettorale nuova.</p></div>
+    <div class="card"><p class="title">2. Due blocchi quasi pari</p><p class="why">Centrodestra e "campo largo" sono a <b>0,1 punti</b> di distanza nei sondaggi.</p></div>
+    <div class="card"><p class="title">3. Ora si discute la Manovra</p><p class="why">La legge sui soldi dello Stato per il 2027. Va approvata <b>entro il 31 dicembre</b>.</p></div>
+
+    <h2>Ultime notizie</h2>
+    <p class="hint"><span class="srcb u">Ufficiale</span> = dal sito di un'istituzione. <span class="srcb s">Stampa</span> = da un giornale o istituto di sondaggi.</p>
+    <p class="hint">Filtra per tema:</p>
+    <div class="chips" id="newsFilter"></div>
+    <div id="news" style="display:flex;flex-direction:column;gap:12px"></div>
+
+    <h2>Sondaggi</h2>
+    <p class="hint">Media di più sondaggi (Youtrend/Agi, 29 ottobre 2026). Sono stime, non risultati.</p>
+    <div class="coal">
+      <div class="card"><span class="side" style="color:var(--dx)">Centrodestra</span><span class="big">43,7%</span></div>
+      <div class="card"><span class="side" style="color:var(--sx)">Campo largo</span><span class="big">43,8%</span></div>
+    </div>
+    <div class="card"><div class="poll" id="poll"></div></div>
+  </section>
+
+  <!-- PARTITI -->
+  <section class="view" id="v-partiti" hidden>
+    <h2>I partiti in Parlamento</h2>
+    <p class="hint">Tocca una scheda per aprirla. Il colore è quello del partito.</p>
+    <div class="chips" id="sideFilter"></div>
+    <div id="parties" style="display:flex;flex-direction:column;gap:10px"></div>
+  </section>
+
+  <!-- TEMI -->
+  <section class="view" id="v-temi" hidden>
+    <h2>Cosa pensano su…</h2>
+    <p class="hint">Scegli un tema. Una riga per partito.</p>
+    <div class="chips" id="themeFilter"></div>
+    <div class="card" id="themeIntro"></div>
+    <div class="card" id="themeRows"></div>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section class="view" id="v-calendario" hidden>
+    <h2>Prossime date</h2>
+    <div class="tl" id="tlFut"></div>
+    <h2>Cosa è successo</h2>
+    <p class="hint">Dalle elezioni del 2022 a oggi.</p>
+    <div class="tl" id="tlPast"></div>
+  </section>
+
+  <!-- VOTO -->
+  <section class="view" id="v-voto" hidden>
+    <h2>Come si vota nel 2027</h2>
+    <div class="card"><p class="title">Nuova legge elettorale</p>
+      <ul class="pts">
+        <li>Si chiama <b>Stabilicum</b> (le opposizioni la chiamano "Melonellum").</li>
+        <li>Sistema <b>proporzionale</b>: seggi in base ai voti.</li>
+        <li><b>Premio</b>: una coalizione con almeno il <b>42%</b> ottiene circa il 52-55% dei seggi alla Camera.</li>
+        <li>Si potranno dare <b>preferenze</b> con una crocetta.</li>
+      </ul>
+    </div>
+    <div class="card"><p class="title">Le due elezioni del 2027</p>
+      <ul class="pts">
+        <li><b>Comunali</b>: primavera (15 aprile - 15 giugno) a Roma, Milano, Napoli, Torino, Bologna, Trieste.</li>
+        <li><b>Politiche</b>: previste in autunno.</li>
+      </ul>
+    </div>
+    <div class="card"><p class="title">Sei all'estero per studio?</p>
+      <ul class="pts">
+        <li>Chi è all'estero per qualche mese può chiedere di votare <b>per posta</b>.</li>
+        <li>La richiesta va fatta al <b>Comune</b>, entro una scadenza che esce quando si fissa la data.</li>
+        <li>Controlla sul sito del Ministero dell'Interno o del tuo Comune.</li>
+      </ul>
+    </div>
+    <div class="note"><p>Questo sito non dice chi votare. Mostra cosa dicono e fanno i partiti, così puoi scegliere tu.</p></div>
+  </section>
+
+
+  <footer id="sources"></footer>
+</div>
+
+<script id="dati" type="application/json">
+{
+ "aggiornato": "5 novembre 2026",
+ "partiti": [
+  {
+   "id": "fdi",
+   "nome": "Fratelli d'Italia",
+   "sigla": "FdI",
+   "col": "#1F4E9C",
+   "lato": "dx",
+   "leader": "Giorgia Meloni (Presidente del Consiglio)",
+   "sond": 27.9,
+   "punti": [
+    "Primo partito, guida il governo dal 2022",
+    "Destra conservatrice",
+    "Vuole il premierato: elezione diretta del premier"
+   ]
+  },
+  {
+   "id": "lega",
+   "nome": "Lega",
+   "sigla": "Lega",
+   "col": "#1E8E3E",
+   "lato": "dx",
+   "leader": "Matteo Salvini (vicepremier)",
+   "sond": 6.1,
+   "punti": [
+    "Al governo con FdI e FI",
+    "Bandiera: autonomia delle Regioni",
+    "Ha perso deputati verso Futuro Nazionale"
+   ]
+  },
+  {
+   "id": "fi",
+   "nome": "Forza Italia",
+   "sigla": "FI",
+   "col": "#2EA3E3",
+   "lato": "dx",
+   "leader": "Antonio Tajani (vicepremier, Esteri)",
+   "sond": 7.4,
+   "punti": [
+    "Al governo, area moderata",
+    "Nel Partito Popolare Europeo",
+    "Bandiera: separazione delle carriere (bocciata al referendum)"
+   ]
+  },
+  {
+   "id": "nm",
+   "nome": "Noi Moderati",
+   "sigla": "NM",
+   "col": "#E08A1E",
+   "lato": "dx",
+   "leader": "Maurizio Lupi",
+   "sond": null,
+   "punti": [
+    "Piccolo partito centrista",
+    "Al governo nel centrodestra"
+   ]
+  },
+  {
+   "id": "pd",
+   "nome": "Partito Democratico",
+   "sigla": "PD",
+   "col": "#D7261E",
+   "lato": "sx",
+   "leader": "Elly Schlein",
+   "sond": 20.2,
+   "punti": [
+    "Primo partito di opposizione",
+    "Centrosinistra",
+    "Nel \"campo largo\" con M5S e AVS"
+   ]
+  },
+  {
+   "id": "m5s",
+   "nome": "Movimento 5 Stelle",
+   "sigla": "M5S",
+   "col": "#E8C000",
+   "lato": "sx",
+   "leader": "Giuseppe Conte",
+   "sond": 11.9,
+   "punti": [
+    "Opposizione, nel campo largo",
+    "Contro nuove armi all'Ucraina",
+    "Chiede le primarie per scegliere il leader"
+   ]
+  },
+  {
+   "id": "avs",
+   "nome": "Alleanza Verdi e Sinistra",
+   "sigla": "AVS",
+   "col": "#0E8C6E",
+   "lato": "sx",
+   "leader": "Angelo Bonelli e Nicola Fratoianni",
+   "sond": 6.2,
+   "punti": [
+    "Opposizione, nel campo largo",
+    "Ambiente e sinistra",
+    "Contro l'invio di armi"
+   ]
+  },
+  {
+   "id": "az",
+   "nome": "Azione",
+   "sigla": "Az",
+   "col": "#3B4CC0",
+   "lato": "altro",
+   "leader": "Carlo Calenda",
+   "sond": 3.3,
+   "punti": [
+    "Opposizione centrista",
+    "Ha detto no al campo largo",
+    "Ha votato a favore della separazione delle carriere"
+   ]
+  },
+  {
+   "id": "iv",
+   "nome": "Italia Viva",
+   "sigla": "IV",
+   "col": "#C22C8C",
+   "lato": "altro",
+   "leader": "Matteo Renzi",
+   "sond": 2.4,
+   "punti": [
+    "Opposizione centrista",
+    "Vuole entrare nel campo largo",
+    "Conte chiede \"garanzie\" su di lui",
+    "Alla Camera il gruppo si chiama ora \"Italia Viva - Casa Riformista\""
+   ]
+  },
+  {
+   "id": "pe",
+   "nome": "+Europa",
+   "sigla": "+Eu",
+   "col": "#B7791F",
+   "lato": "sx",
+   "leader": "Riccardo Magi",
+   "sond": 1.5,
+   "punti": [
+    "Europeisti e liberali",
+    "Partecipa al tavolo del campo largo",
+    "Diritti civili tra i temi principali",
+    "Alla Camera: componente \"+Europa - Stati Uniti d'Europa\" nel gruppo Misto"
+   ]
+  },
+  {
+   "id": "fn",
+   "nome": "Futuro Nazionale",
+   "sigla": "FN",
+   "col": "#0B1F4D",
+   "lato": "altro",
+   "leader": "Roberto Vannacci",
+   "sond": 6.1,
+   "punti": [
+    "Nato a febbraio 2026, dopo l'uscita di Vannacci dalla Lega",
+    "Estrema destra. Alla Camera: componente nel gruppo Misto dal 27 maggio 2026",
+    "Meloni esclude un'alleanza per il 2027"
+   ]
+  }
+ ],
+ "temi": [
+  {
+   "id": "tasse",
+   "nome": "Tasse",
+   "intro": "Quanto paghiamo e chi deve pagare di più.",
+   "pos": {
+    "fdi": "Taglio dell'Irpef al ceto medio; più tasse a banche e assicurazioni nella Manovra",
+    "lega": "Flat tax, da allargare alle partite Iva",
+    "fi": "Meno tasse sul ceto medio; ha accettato il contributo delle banche",
+    "nm": "Sostiene la Manovra del governo",
+    "pd": "Critica la Manovra; vuole più soldi per la sanità pubblica",
+    "m5s": "Contro la Manovra del governo",
+    "avs": "Far pagare di più grandi patrimoni ed extraprofitti",
+    "fn": "Tagli fiscali e aiuti alle famiglie"
+   }
+  },
+  {
+   "id": "lavoro",
+   "nome": "Lavoro e salari",
+   "intro": "Stipendi, pensioni, giovani.",
+   "pos": {
+    "fdi": "No al salario minimo per legge: punta sui contratti",
+    "lega": "Pensione più flessibile (uscita a 64 anni)",
+    "fi": "Pensioni minime a 1.000 euro",
+    "pd": "Salario minimo; congedo uguale per mamme e papà",
+    "m5s": "Salario minimo; meno ore di lavoro",
+    "avs": "Salario minimo; meno ore di lavoro",
+    "az": "Ha firmato la proposta di salario minimo nel 2023",
+    "pe": "Ha firmato la proposta di salario minimo nel 2023",
+    "fn": "Aiuti per chi fa figli"
+   }
+  },
+  {
+   "id": "migranti",
+   "nome": "Immigrazione",
+   "intro": "Sbarchi, accoglienza, cittadinanza.",
+   "pos": {
+    "fdi": "Centri per migranti in Albania; linea dura sugli sbarchi",
+    "lega": "Linea dura; sicurezza",
+    "fi": "Segue la linea del governo",
+    "pd": "Contro i centri in Albania: \"un fallimento\"",
+    "m5s": "Contro i centri in Albania: \"uno spreco\"",
+    "avs": "Contro i centri in Albania; più accoglienza",
+    "pe": "Ha promosso il referendum 2025 per la cittadinanza in 5 anni",
+    "fn": "\"Remigrazione\"; stop agli ingressi per lavoro"
+   }
+  },
+  {
+   "id": "ucraina",
+   "nome": "Ucraina e difesa",
+   "intro": "Armi a Kyiv e spese militari.",
+   "pos": {
+    "fdi": "Sostegno a Kyiv, anche con armi",
+    "lega": "Contraria a nuove armi",
+    "fi": "Sostegno a Kyiv",
+    "pd": "Sostegno a Kyiv; no ad armi per colpire la Russia",
+    "m5s": "Stop alle armi; no al riarmo",
+    "avs": "Contro l'invio di armi",
+    "az": "Sostegno a Kyiv",
+    "iv": "Sostegno a Kyiv; critica Conte",
+    "pe": "Sostegno a Kyiv",
+    "fn": "Stop alle armi; no ai fondi europei per la difesa (SAFE)"
+   }
+  },
+  {
+   "id": "diritti",
+   "nome": "Diritti",
+   "intro": "Diritti civili e famiglia.",
+   "pos": {
+    "fdi": "Difesa della famiglia tradizionale",
+    "pd": "Più diritti civili",
+    "avs": "Più diritti civili",
+    "pe": "Diritti civili, fine vita, cannabis legale",
+    "fn": "Vuole abolire il reato di femminicidio e la legge contro l'odio razziale (legge Mancino)"
+   }
+  },
+  {
+   "id": "riforme",
+   "nome": "Riforme",
+   "intro": "Come funzionano Stato e Parlamento.",
+   "pos": {
+    "fdi": "Premierato e nuova legge elettorale (Stabilicum)",
+    "lega": "Autonomia differenziata delle Regioni",
+    "fi": "Separazione delle carriere dei giudici",
+    "pd": "Contro la nuova legge elettorale e l'autonomia",
+    "m5s": "Contro la nuova legge elettorale",
+    "avs": "Contro la nuova legge elettorale e l'autonomia",
+    "az": "A favore della separazione delle carriere"
+   }
+  }
+ ],
+ "notizie": [
+  {
+   "data": "5 nov",
+   "tema": "Parlamento",
+   "partiti": [],
+   "cosa": "La Camera approva il decreto 162/2026 sul sostegno economico: costi dei carburanti e fisco.",
+   "perche": "Riguarda i prezzi alla pompa.",
+   "fonte": "u",
+   "link": "https://camera.it/leg19/126?idDocumento=3174&leg=19",
+   "sito": "camera.it"
+  },
+  {
+   "data": "5 nov",
+   "tema": "Governo",
+   "partiti": [
+    "fdi"
+   ],
+   "cosa": "Si riunisce il Consiglio dei ministri n. 196. Tra i temi: vertici ANAC e Croce Rossa.",
+   "perche": "Qui il governo prende le decisioni.",
+   "fonte": "u",
+   "link": "https://www.governo.it/it/articolo/comunicato-stampa-del-consiglio-dei-ministri-n-196/33042",
+   "sito": "governo.it"
+  },
+  {
+   "data": "4 nov",
+   "tema": "Lavoro",
+   "partiti": [
+    "fdi"
+   ],
+   "cosa": "Accordo su Electrolux: oltre 100 milioni di investimenti, uscite solo volontarie.",
+   "perche": "Riguarda posti di lavoro nelle fabbriche.",
+   "fonte": "u",
+   "link": "https://www.governo.it/it/notizie-presidente",
+   "sito": "governo.it"
+  },
+  {
+   "data": "4 nov",
+   "tema": "Tasse",
+   "partiti": [
+    "lega"
+   ],
+   "cosa": "Manovra: lite per la scelta di un relatore della Lega. Le opposizioni attaccano Salvini.",
+   "perche": "Mostra tensioni dentro il governo.",
+   "fonte": "s",
+   "link": "https://www.ilfattoquotidiano.it/politica-palazzo/",
+   "sito": "Il Fatto Quotidiano"
+  },
+  {
+   "data": "31 ott",
+   "tema": "Ucraina",
+   "partiti": [
+    "lega",
+    "m5s",
+    "pd"
+   ],
+   "cosa": "Salvini e Conte di nuovo contro nuove armi a Kyiv. Il PD li critica.",
+   "perche": "Divide sia il governo sia il campo largo.",
+   "fonte": "s",
+   "link": "https://www.lacapitalenews.it/top-news/salvini-e-conte-i-putiniani-ditalia/",
+   "sito": "La Capitale News"
+  },
+  {
+   "data": "30 ott",
+   "tema": "Tasse",
+   "partiti": [
+    "fdi",
+    "lega",
+    "fi"
+   ],
+   "cosa": "Manovra 2027 in Parlamento. Irpef al 33% fino a 55mila euro (oggi 50mila). Under 30: tassa all'1% sul reddito in più.",
+   "perche": "Decide quanto paghi tu nel 2027.",
+   "fonte": "u",
+   "link": "https://documenti.camera.it/leg19/pdl/pdf/leg.19.pdl.camera.3174.19PDL0221140.pdf",
+   "sito": "camera.it"
+  },
+  {
+   "data": "30 ott",
+   "tema": "Famiglie",
+   "partiti": [
+    "fdi",
+    "lega",
+    "fi"
+   ],
+   "cosa": "Manovra: 100 euro al mese a mamme lavoratrici con 2+ figli. Sanità: +2,4 miliardi l'anno.",
+   "perche": "Aiuti diretti a famiglie e ospedali.",
+   "fonte": "u",
+   "link": "https://documenti.camera.it/leg19/pdl/pdf/leg.19.pdl.camera.3174.19PDL0221140.pdf",
+   "sito": "camera.it"
+  },
+  {
+   "data": "30 ott",
+   "tema": "Elezioni",
+   "partiti": [
+    "pd",
+    "m5s",
+    "avs"
+   ],
+   "cosa": "Campo largo: programma entro novembre, primarie entro febbraio, piazza a dicembre.",
+   "perche": "Così sceglieranno chi sfida Meloni.",
+   "fonte": "s",
+   "link": "https://www.open.online/2026/10/30/campo-largo-prossimi-passi-programma-primarie-manifestazione/",
+   "sito": "Open"
+  },
+  {
+   "data": "29 ott",
+   "tema": "Sondaggi",
+   "partiti": [
+    "fdi",
+    "fn"
+   ],
+   "cosa": "FdI sale al 27,9%. Futuro Nazionale scende al 6,1%, pari alla Lega.",
+   "perche": "Le coalizioni restano quasi pari.",
+   "fonte": "s",
+   "link": "https://www.youtrend.it/2026/11/02/supermedia-youtrend-agi-fdi-sale-al-279-cala-futuro-nazionale/",
+   "sito": "Youtrend"
+  },
+  {
+   "data": "12 ott",
+   "tema": "Parlamento",
+   "partiti": [],
+   "cosa": "Alla Camera nasce una nuova componente nel gruppo Misto: Sud Chiama Nord.",
+   "perche": "Cambia la mappa dei gruppi.",
+   "fonte": "u",
+   "link": "https://www.camera.it/leg19/1083",
+   "sito": "camera.it"
+  },
+  {
+   "data": "8 ott",
+   "tema": "Elezioni",
+   "partiti": [
+    "fdi"
+   ],
+   "cosa": "La Camera approva in via definitiva la nuova legge elettorale: 227 sì, 164 no.",
+   "perche": "È la legge con cui voterai nel 2027.",
+   "fonte": "u",
+   "link": "https://comunicazione.camera.it/archivio-prima-pagina/19-62971",
+   "sito": "camera.it"
+  }
+ ],
+ "futuro": [
+  {
+   "d": "Novembre 2026",
+   "t": "Il campo largo scrive il suo programma"
+  },
+  {
+   "d": "Dicembre 2026",
+   "t": "Manifestazione del campo largo contro la Manovra"
+  },
+  {
+   "d": "31 dicembre 2026",
+   "t": "Ultimo giorno per approvare la Manovra"
+  },
+  {
+   "d": "Entro febbraio 2027",
+   "t": "Primarie del campo largo: scelgono il candidato premier"
+  },
+  {
+   "d": "Apr - giu 2027",
+   "t": "Comunali a Roma, Milano, Napoli, Torino, Bologna, Trieste"
+  },
+  {
+   "d": "Autunno 2027",
+   "t": "Elezioni politiche"
+  }
+ ],
+ "passato": [
+  {
+   "d": "Settembre 2022",
+   "t": "Elezioni: vince il centrodestra. Nasce il governo Meloni (FdI, Lega, FI, Noi Moderati)"
+  },
+  {
+   "d": "2024",
+   "t": "Legge sull'autonomia delle Regioni. A novembre la Corte costituzionale ne boccia parti importanti"
+  },
+  {
+   "d": "Ottobre 2024",
+   "t": "Aprono i centri per migranti in Albania"
+  },
+  {
+   "d": "30 ottobre 2025",
+   "t": "Il Parlamento approva la separazione delle carriere dei magistrati"
+  },
+  {
+   "d": "3 febbraio 2026",
+   "t": "Vannacci lascia la Lega e fonda Futuro Nazionale"
+  },
+  {
+   "d": "22-23 marzo 2026",
+   "t": "Referendum sulla giustizia: vince il No, la riforma è bocciata"
+  },
+  {
+   "d": "Maggio 2026",
+   "t": "L'Albania dice che non rinnoverà l'accordo sui migranti oltre il 2030"
+  },
+  {
+   "d": "6 giugno 2026",
+   "t": "Futuro Nazionale arriva a 8 deputati, presi da Lega e FI"
+  },
+  {
+   "d": "8 ottobre 2026",
+   "t": "Approvata la nuova legge elettorale"
+  },
+  {
+   "d": "30 ottobre 2026",
+   "t": "Il governo presenta la Manovra 2027"
+  }
+ ],
+ "siti": [
+  {
+   "cat": "Istituzioni",
+   "nome": "Presidente della Repubblica",
+   "cosa": "Il Quirinale: discorsi, leggi firmate",
+   "url": "https://www.quirinale.it"
+  },
+  {
+   "cat": "Istituzioni",
+   "nome": "Governo",
+   "cosa": "Decisioni del Consiglio dei ministri",
+   "url": "https://www.governo.it"
+  },
+  {
+   "cat": "Istituzioni",
+   "nome": "Camera dei deputati",
+   "cosa": "Deputati, leggi in discussione, dirette",
+   "url": "https://www.camera.it"
+  },
+  {
+   "cat": "Istituzioni",
+   "nome": "Senato",
+   "cosa": "Senatori, voti, leggi in discussione",
+   "url": "https://www.senato.it"
+  },
+  {
+   "cat": "Istituzioni",
+   "nome": "Parlamento",
+   "cosa": "Portale comune di Camera e Senato",
+   "url": "https://www.parlamento.it"
+  },
+  {
+   "cat": "Istituzioni",
+   "nome": "Corte costituzionale",
+   "cosa": "Decide se una legge rispetta la Costituzione",
+   "url": "https://www.cortecostituzionale.it"
+  },
+  {
+   "cat": "Leggi",
+   "nome": "Normattiva",
+   "cosa": "Tutte le leggi in vigore, aggiornate",
+   "url": "https://www.normattiva.it"
+  },
+  {
+   "cat": "Leggi",
+   "nome": "Gazzetta Ufficiale",
+   "cosa": "Dove le leggi vengono pubblicate",
+   "url": "https://www.gazzettaufficiale.it"
+  },
+  {
+   "cat": "Voto",
+   "nome": "Eligendo",
+   "cosa": "Risultati ufficiali di tutte le elezioni",
+   "url": "https://elezioni.interno.gov.it"
+  },
+  {
+   "cat": "Voto",
+   "nome": "Ministero dell'Interno, Elezioni",
+   "cosa": "Date, regole, liste e candidati",
+   "url": "https://dait.interno.gov.it/elezioni"
+  },
+  {
+   "cat": "Voto",
+   "nome": "Ministero degli Esteri",
+   "cosa": "Votare dall'estero: regole e moduli",
+   "url": "https://www.esteri.it"
+  },
+  {
+   "cat": "Soldi pubblici",
+   "nome": "Ministero dell'Economia",
+   "cosa": "Manovra, tasse, conti dello Stato",
+   "url": "https://www.mef.gov.it"
+  },
+  {
+   "cat": "Soldi pubblici",
+   "nome": "Ufficio parlamentare di bilancio",
+   "cosa": "Controlla i conti del governo, è indipendente",
+   "url": "https://www.upbilancio.it"
+  },
+  {
+   "cat": "Soldi pubblici",
+   "nome": "Istat",
+   "cosa": "Numeri ufficiali: lavoro, prezzi, popolazione",
+   "url": "https://www.istat.it"
+  },
+  {
+   "cat": "Soldi pubblici",
+   "nome": "Banca d'Italia",
+   "cosa": "Economia, debito, risparmi",
+   "url": "https://www.bancaditalia.it"
+  },
+  {
+   "cat": "Controlli",
+   "nome": "Corte dei conti",
+   "cosa": "Controlla come si spendono i soldi pubblici",
+   "url": "https://www.corteconti.it"
+  },
+  {
+   "cat": "Controlli",
+   "nome": "ANAC",
+   "cosa": "Autorità anticorruzione",
+   "url": "https://www.anticorruzione.it"
+  },
+  {
+   "cat": "Controlli",
+   "nome": "AGCOM",
+   "cosa": "Regole su TV e spazi ai partiti (par condicio)",
+   "url": "https://www.agcom.it"
+  },
+  {
+   "cat": "Europa",
+   "nome": "Parlamento europeo in Italia",
+   "cosa": "Eurodeputati italiani e voti in UE",
+   "url": "https://www.europarl.europa.eu/italy/it"
+  },
+  {
+   "cat": "Dati",
+   "nome": "Dati aperti",
+   "cosa": "Dati pubblici da scaricare",
+   "url": "https://www.dati.gov.it"
+  }
+ ],
+ "fonti": [
+  [
+   "Youtrend/Agi, Supermedia (sondaggi)",
+   "https://www.youtrend.it/la-supermedia/"
+  ],
+  [
+   "Il Post, legge elettorale",
+   "https://www.ilpost.it/2026/10/09/legge-elettorale-come-si-vota-stabilicum-melonellum-elezioni-politiche-2027/"
+  ],
+  [
+   "Open, campo largo",
+   "https://www.open.online/2026/10/30/campo-largo-prossimi-passi-programma-primarie-manifestazione/"
+  ],
+  [
+   "Pagella Politica, Ucraina",
+   "https://pagellapolitica.it/articoli/campo-largo-divisioni-ucraina"
+  ],
+  [
+   "Sky TG24, Futuro Nazionale",
+   "https://tg24.sky.it/politica/2026/06/06/futuro-nazionale-cinque-ingressi-partito-vannacci"
+  ]
+ ]
+}
+</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('dati').textContent);
+  var P = {}; D.partiti.forEach(function(p){P[p.id]=p});
+  var esc = function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var chip = function(id){var p=P[id]; return p?'<span class="pchip"><i style="background:'+p.col+'"></i>'+esc(p.sigla)+'</span>':''};
+  var latoNome = {dx:'Centrodestra',sx:'Campo largo',altro:'Altri'};
+  var latoCol = {dx:'var(--dx)',sx:'var(--sx)',altro:'var(--altro)'};
+  document.getElementById('upd').textContent = 'Aggiornato il ' + D.aggiornato;
+
+  // Views
+  var views=['oggi','partiti','temi','calendario','voto'];
+  function show(v){ if(views.indexOf(v)<0) v='oggi';
+    views.forEach(function(x){document.getElementById('v-'+x).hidden = x!==v; document.getElementById('t-'+x).setAttribute('aria-selected', x===v)});
+  }
+  document.querySelectorAll('.tab,.qbtn').forEach(function(b){b.addEventListener('click',function(){var v=b.dataset.v||b.dataset.go; location.hash=v; show(v); window.scrollTo(0,0)})});
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+  show(location.hash.slice(1));
+
+  // News
+  var temiNews=['Tutte'].concat(D.notizie.map(function(n){return n.tema}).filter(function(t,i,a){return a.indexOf(t)===i}));
+  var nf=document.getElementById('newsFilter'), cur='Tutte';
+  function drawNews(){
+    nf.innerHTML=temiNews.map(function(t){return '<button class="chip" aria-pressed="'+(t===cur)+'" data-t="'+esc(t)+'">'+esc(t)+'</button>'}).join('');
+    document.getElementById('news').innerHTML=D.notizie.filter(function(n){return cur==='Tutte'||n.tema===cur}).map(function(n){
+      return '<article class="card"><div class="meta"><span>'+esc(n.data)+'</span><span class="tag">'+esc(n.tema)+'</span>'+n.partiti.map(chip).join('')+'</div><p class="title">'+esc(n.cosa)+'</p><p class="why"><b>Perché conta:</b> '+esc(n.perche)+'</p></article>'}).join('');
+  }
+  nf.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b){cur=b.dataset.t; drawNews()}});
+  drawNews();
+
+  // Poll
+  var sorted=D.partiti.filter(function(p){return p.sond!=null}).sort(function(a,b){return b.sond-a.sond});
+  var max=30;
+  document.getElementById('poll').innerHTML=sorted.map(function(p){
+    return '<div class="prow"><span>'+esc(p.sigla)+'</span><div class="bar"><div style="width:'+(p.sond/max*100)+'%;background:'+p.col+'"></div></div><span class="num">'+p.sond.toFixed(1).replace('.',',')+'%</span></div>'}).join('');
+
+  // Parties
+  var sf=document.getElementById('sideFilter'), side='tutti';
+  function drawParties(){
+    var opts=[['tutti','Tutti'],['dx','Centrodestra'],['sx','Campo largo'],['altro','Altri']];
+    sf.innerHTML=opts.map(function(o){return '<button class="chip" aria-pressed="'+(o[0]===side)+'" data-s="'+o[0]+'">'+o[1]+'</button>'}).join('');
+    document.getElementById('parties').innerHTML=D.partiti.filter(function(p){return side==='tutti'||p.lato===side}).map(function(p){
+      var temiP=D.temi.filter(function(t){return t.pos[p.id]}).map(function(t){return '<li><b>'+esc(t.nome)+':</b> '+esc(t.pos[p.id])+'</li>'}).join('');
+      return '<details class="party" style="--pc:'+p.col+'"><summary><p class="pname">'+esc(p.nome)+'</p><span class="pleader">'+esc(p.leader)+'</span><span class="ppoll"><b>'+(p.sond!=null?p.sond.toFixed(1).replace('.',',')+'%':'n.d.')+'</b><span>sondaggi</span></span></summary>'+
+        '<div class="pbody"><span class="side" style="color:'+latoCol[p.lato]+'">'+latoNome[p.lato]+'</span><ul class="pts">'+p.punti.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+
+        (temiP?'<span class="side" style="color:var(--muted)">Sui temi</span><ul class="pts">'+temiP+'</ul>':'')+'</div></details>'}).join('');
+  }
+  sf.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b){side=b.dataset.s; drawParties()}});
+  drawParties();
+
+  // Themes
+  var tf=document.getElementById('themeFilter'), th=D.temi[0].id;
+  function drawTheme(){
+    tf.innerHTML=D.temi.map(function(t){return '<button class="chip" aria-pressed="'+(t.id===th)+'" data-th="'+t.id+'">'+esc(t.nome)+'</button>'}).join('');
+    var t=D.temi.filter(function(x){return x.id===th})[0];
+    document.getElementById('themeIntro').innerHTML='<p class="title">'+esc(t.nome)+'</p><p class="why">'+esc(t.intro)+'</p>';
+    var order=['dx','sx','altro'];
+    document.getElementById('themeRows').innerHTML=order.map(function(l){
+      return D.partiti.filter(function(p){return p.lato===l}).map(function(p){
+        var v=t.pos[p.id];
+        return '<div class="trow">'+chip(p.id)+'<span'+(v?'':' class="unk"')+'>'+esc(v||'Posizione non chiara: da approfondire')+'</span></div>'}).join('')}).join('');
+  }
+  tf.addEventListener('click',function(e){var b=e.target.closest('.chip'); if(b){th=b.dataset.th; drawTheme()}});
+  drawTheme();
+
+  // Timeline
+  var tl=function(a,fut){return a.map(function(x){return '<div class="ti'+(fut?' fut':'')+'"><span class="d">'+esc(x.d)+'</span><p>'+esc(x.t)+'</p></div>'}).join('')};
+  document.getElementById('tlFut').innerHTML=tl(D.futuro,true);
+  document.getElementById('tlPast').innerHTML=tl(D.passato.slice().reverse(),false);
+
+  // Siti
+  var catCol={'Istituzioni':'#1F4E9C','Leggi':'#6B4FBB','Voto':'#2E9D5B','Soldi pubblici':'#C27A12','Controlli':'#B5312B','Europa':'#2E6FD8','Dati':'#5A6676'};
+  var cats=['Tutti'].concat(D.siti.map(function(s){return s.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
+
+  var byCat={}; D.siti.forEach(function(x){(byCat[x.cat]=byCat[x.cat]||[]).push(x)});
+  document.getElementById('sources').innerHTML='<h2>Risorse ufficiali</h2><p class="hint">I siti delle istituzioni da cui prendo le informazioni. Tocca per aprire.</p><div class="res">'+
+    cats.slice(1).map(function(c){return '<div class="rescat"><span class="side" style="color:'+catCol[c]+'">'+esc(c)+'</span><ul>'+byCat[c].map(function(x){return '<li><a href="'+x.url+'" target="_blank" rel="noopener">'+esc(x.nome)+'</a><span>'+esc(x.cosa)+'</span></li>'}).join('')+'</ul></div>'}).join('')+
+    '</div><h2>Altre fonti</h2><p class="hint">Sondaggi e posizioni dei partiti non sono su siti istituzionali. Li prendo da qui:</p><p>'+D.fonti.map(function(f){return '<a href="'+f[1]+'" target="_blank" rel="noopener">'+esc(f[0])+'</a>'}).join(' · ')+'</p><p>Posizioni riassunte in modo neutrale. Aggiornamento ogni lunedì.</p>';
+})();
+</script>
+
+</body>
+</html>
